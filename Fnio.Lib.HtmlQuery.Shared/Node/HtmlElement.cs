@@ -25,7 +25,7 @@ namespace Fnio.Lib.HtmlQuery.Node
             }
         }
 
-        public IEnumerable<HtmlNode> ChildNodes
+        public IReadOnlyList<HtmlNode> ChildNodes
         {
             get { return this._childNodes; }
         }
@@ -39,7 +39,7 @@ namespace Fnio.Lib.HtmlQuery.Node
         {
             this.Document = doc;
             this.TagName = tagName.ToLowerInvariant();
-            this.Attributes = attributes;
+            this.Attributes = attributes ?? new HtmlAttributes();
             this.AppendChildNodes(childNodes);
         }
 

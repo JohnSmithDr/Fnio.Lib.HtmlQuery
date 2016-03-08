@@ -28,6 +28,16 @@ namespace Fnio.Lib.HtmlQuery.Node
 
         public HtmlDocument() { }
 
+        public HtmlElement CreateElement(string tag)
+        {
+            return this.CreateElement(tag, null, null);
+        }
+
+        public HtmlElement CreateElement(string tag, HtmlAttributes attributes)
+        {
+            return this.CreateElement(tag, attributes, null);
+        }
+
         public HtmlElement CreateElement(string tag, HtmlAttributes attributes, IEnumerable<HtmlNode> childNodes)
         {
             return new HtmlElement(this, tag, attributes, childNodes);

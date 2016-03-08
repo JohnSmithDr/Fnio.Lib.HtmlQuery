@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="Node\HtmlAttributesTest.cs" />
     <Compile Include="Node\HtmlAttributeTest.cs" />
+    <Compile Include="Node\HtmlElementTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
