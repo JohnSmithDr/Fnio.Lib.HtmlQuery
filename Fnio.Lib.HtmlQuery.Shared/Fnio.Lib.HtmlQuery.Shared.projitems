@@ -11,6 +11,7 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)HtmlAttributeExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HtmlDomException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HtmlLoader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HtmlParser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Node\HtmlAttributes.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Node\HtmlAttribute.cs" />
