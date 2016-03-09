@@ -1,5 +1,6 @@
 ﻿{
   "dependencies": {
+    "CenterCLR.SgmlReader": "2014.12.7.3",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0"
   },
   "frameworks": {
