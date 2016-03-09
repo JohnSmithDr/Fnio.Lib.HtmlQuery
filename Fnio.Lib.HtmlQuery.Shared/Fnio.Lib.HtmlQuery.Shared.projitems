@@ -9,6 +9,7 @@
     <Import_RootNamespace>Fnio.Lib.HtmlQuery</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)HtmlAttributeExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HtmlDomException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HtmlParser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Node\HtmlAttributes.cs" />
