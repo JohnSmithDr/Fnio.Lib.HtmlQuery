@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)HtmlDomException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HtmlParser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Node\HtmlAttributes.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Node\HtmlAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Node\HtmlDocument.cs" />
