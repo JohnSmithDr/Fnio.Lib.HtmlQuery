@@ -83,7 +83,7 @@ namespace Fnio.Lib.HtmlQuery.Node
 
         public string Text()
         {
-            var texts = this.InnerTextNodes().Select(n => n.Text);
+            var texts = this.InnerTextNodes().Select(n => n.Text.Trim());
             var sb = new StringBuilder();
             foreach (var text in texts)
             {

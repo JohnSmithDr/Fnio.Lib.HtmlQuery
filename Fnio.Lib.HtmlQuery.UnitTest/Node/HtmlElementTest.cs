@@ -125,16 +125,42 @@ namespace Fnio.Lib.HtmlQuery.UnitTest.Node
         [TestMethod]
         public void TestChildren()
         {
+            var ul = Doc.CreateElement("ul", 
+                Doc.CreateElement("li",
+                    Doc.CreateElement("a", 
+                        Doc.CreateTextNode("foo"))),
+                Doc.CreateElement("li",
+                    Doc.CreateElement("a", 
+                        Doc.CreateTextNode("bar")))
+                );
+
+            ul.Children().Should().HaveCount(2);
+            ul.Children().Select(s => s.TagName).Should().Equal("li", "li");
         }
 
         [TestMethod]
         public void TestDescendants()
         {
+            var ul = Doc.CreateElement("ul",
+                Doc.CreateElement("li",
+                    Doc.CreateElement("a",
+                        Doc.CreateTextNode("foo"))),
+                Doc.CreateElement("li",
+                    Doc.CreateElement("a",
+                        Doc.CreateTextNode("bar")))
+                );
+
+            ul.Descendants().Should().HaveCount(4);
+            ul.Descendants().Select(s => s.TagName).Should().Equal("li", "a", "li", "a");
         }
 
         [TestMethod]
         public void TestText()
         {
+            var spanFoo = Doc.CreateElement("span", Doc.CreateTextNode(" foo "));
+            var spanBar = Doc.CreateElement("span", Doc.CreateTextNode(" bar "));
+            var div = Doc.CreateElement("div", spanFoo, spanBar);
+            div.Text().Should().Be("foo bar");
         }
     }
 }

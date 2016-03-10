@@ -30,17 +30,22 @@ namespace Fnio.Lib.HtmlQuery.Node
 
         public HtmlElement CreateElement(string tag)
         {
-            return this.CreateElement(tag, null, null);
+            return new HtmlElement(this, tag, null, null);
         }
 
         public HtmlElement CreateElement(string tag, HtmlAttributes attributes)
         {
-            return this.CreateElement(tag, attributes, null);
+            return new HtmlElement(this, tag, attributes, null);
         }
 
         public HtmlElement CreateElement(string tag, IEnumerable<HtmlNode> childNodes)
         {
-            return this.CreateElement(tag, null, childNodes);
+            return new HtmlElement(this, tag, null, childNodes);
+        }
+
+        public HtmlElement CreateElement(string tag, params HtmlNode[] childNodes)
+        {
+            return new HtmlElement(this, tag, null, childNodes);
         }
 
         public HtmlElement CreateElement(string tag, HtmlAttributes attributes, IEnumerable<HtmlNode> childNodes)
