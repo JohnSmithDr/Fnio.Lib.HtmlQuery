@@ -88,5 +88,53 @@ namespace Fnio.Lib.HtmlQuery.UnitTest.Node
             el.ChildNodes[1].Should().BeOfType<HtmlTextNode>();
             el.ChildNodes[2].Should().BeOfType<HtmlTextNode>();
         }
+
+        [TestMethod]
+        public void TestAppendChild()
+        {
+            var el = Doc.CreateElement("a");
+            var tx = Doc.CreateTextNode("foo");
+            var p = Doc.CreateElement("p");
+            p.AppendChild(el).Should().Be(p);
+            p.AppendChild(tx).Should().Be(p);
+            p.ChildNodes.Should().HaveCount(2);
+            p.ChildNodes.Should().Equal(el, tx);
+
+            // should throw exception for null
+            //
+            p.Invoking(s => s.AppendChild(null)).ShouldThrow<ArgumentNullException>();
+
+            // should throw exception for appending node that create by another document
+            //
+            var anotherDoc = new HtmlDocument();
+            anotherDoc.CreateElement("a").Invoking(s => p.AppendChild(s)).ShouldThrow<HtmlDomException>();
+            anotherDoc.CreateTextNode("bar").Invoking(s => p.AppendChild(s)).ShouldThrow<HtmlDomException>();
+        }
+
+        [TestMethod]
+        public void AppendChildNodes()
+        {
+            var el = Doc.CreateElement("a");
+            var tx = Doc.CreateTextNode("foo");
+            var p = Doc.CreateElement("p");
+            p.AppendChildNodes(new HtmlNode[] { el, tx }).Should().Be(p);
+            p.ChildNodes.Should().HaveCount(2);
+            p.ChildNodes.Should().Equal(el, tx);
+        }
+
+        [TestMethod]
+        public void TestChildren()
+        {
+        }
+
+        [TestMethod]
+        public void TestDescendants()
+        {
+        }
+
+        [TestMethod]
+        public void TestText()
+        {
+        }
     }
 }
