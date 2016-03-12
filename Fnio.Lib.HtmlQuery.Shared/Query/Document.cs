@@ -23,5 +23,10 @@ namespace Fnio.Lib.HtmlQuery
             tagName = tagName.ToLowerInvariant();
             return doc.Root?.ToEnumerable().Where(n => n.TagName == tagName);
         }
+
+        public static IEnumerable<HtmlElement> GetElements(this HtmlDocument doc, Func<HtmlElement, bool> predicate)
+        {
+            return doc.Root?.ToEnumerable().Where(predicate);
+        }
     }
 }

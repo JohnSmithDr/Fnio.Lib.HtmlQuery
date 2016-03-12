@@ -67,6 +67,7 @@
     <Compile Include="Node\HtmlAttributeTest.cs" />
     <Compile Include="Node\HtmlElementTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Query\DocumentTest.cs" />
     <Compile Include="Query\DescendantsTest.cs" />
     <Compile Include="Query\ChildrenTest.cs" />
     <Compile Include="Query\ElementsTest.cs" />
