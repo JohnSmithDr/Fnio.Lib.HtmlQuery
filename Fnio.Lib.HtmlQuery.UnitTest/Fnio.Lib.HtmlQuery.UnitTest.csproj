@@ -71,6 +71,7 @@
     <Compile Include="Query\DescendantsTest.cs" />
     <Compile Include="Query\ChildrenTest.cs" />
     <Compile Include="Query\ElementsTest.cs" />
+    <Compile Include="Query\HtmlQueryTest.cs" />
     <Compile Include="TestData.cs" />
   </ItemGroup>
   <ItemGroup>

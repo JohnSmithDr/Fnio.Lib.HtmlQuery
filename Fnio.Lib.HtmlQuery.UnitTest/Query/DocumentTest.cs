@@ -6,11 +6,8 @@ using System.Linq;
 
 namespace Fnio.Lib.HtmlQuery.UnitTest.Query
 {
-    [TestClass]
-    public class DocumentTest
+    public partial class HtmlQueryTest
     {
-        public HtmlDocument Doc { get; } = HtmlParser.Parse(TestData.SimpleHtmlDoc);
-
         [TestMethod]
         public void TestGetElementById()
         {

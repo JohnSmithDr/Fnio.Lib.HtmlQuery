@@ -6,11 +6,8 @@ using System.Collections.Generic;
 
 namespace Fnio.Lib.HtmlQuery.UnitTest.Query
 {
-    [TestClass]
-    public class ElementsTest
+    public partial class HtmlQueryTest
     {
-        public HtmlDocument Doc { get; } = HtmlParser.Parse(TestData.SimpleHtmlDoc);
-
         [TestMethod]
         public void TestHasAttribute()
         {
