@@ -19,14 +19,14 @@ namespace Fnio.Lib.HtmlQuery
 
         public static bool ContainsClassNames(this HtmlElement e, IEnumerable<string> classNames)
         {
+            if (!classNames.Any()) return false;
             var classNameSet = new HashSet<string>(e.ClassNames);
             return classNames.All(name => classNameSet.Contains(name));
         }
 
         public static bool ContainsClassNames(this HtmlElement e, params string[] classNames)
         {
-            var classNameSet = new HashSet<string>(e.ClassNames);
-            return classNames.All(name => classNameSet.Contains(name));
+            return ContainsClassNames(e, classNames.AsEnumerable());
         }
     }
 }
