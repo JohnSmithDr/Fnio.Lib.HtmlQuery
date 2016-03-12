@@ -12,6 +12,16 @@ namespace Fnio.Lib.HtmlQuery
             return self.Concat(e.Descendants());
         }
 
+        public static bool HasAttribute(this HtmlElement e)
+        {
+            return e.Attributes.Any();
+        }
+
+        public static bool HasAttribute(this HtmlElement e, string attributeName)
+        {
+            return e.Attributes.GetAttribute(attributeName) != null;
+        }
+
         public static bool HasClassName(this HtmlElement e, string className)
         {
             return e.ClassNames.Contains(className);
@@ -28,5 +38,6 @@ namespace Fnio.Lib.HtmlQuery
         {
             return ContainsClassNames(e, classNames.AsEnumerable());
         }
+
     }
 }

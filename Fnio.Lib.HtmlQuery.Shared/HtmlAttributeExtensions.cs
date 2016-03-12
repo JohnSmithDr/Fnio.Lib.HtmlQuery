@@ -18,25 +18,6 @@ namespace Fnio.Lib.HtmlQuery.Node
             return string.IsNullOrEmpty(src) ? src : CombineUrl(e.Document.Url, src);
         }
 
-        public static bool HasClassName(this HtmlElement e, string className)
-        {
-            return e.ClassNames.Contains(className);
-        }
-
-        public static bool HasClassNames(this HtmlElement e, params string[] classNames)
-        {
-            var init = e.ClassNames.ToArray();
-            var set = new HashSet<string>(init);
-            foreach (var n in classNames)
-                if (!set.Contains(n)) return false;
-            return true;
-        }
-
-        public static bool HasAttribute(this HtmlElement e, string attributeName)
-        {
-            return e.Attributes.GetAttribute(attributeName) == null;
-        }
-
         private static string CombineUrl(Uri baseUrl, string relativeOrAbsoluteUrl)
         {
             return new Uri(baseUrl, relativeOrAbsoluteUrl).ToString();

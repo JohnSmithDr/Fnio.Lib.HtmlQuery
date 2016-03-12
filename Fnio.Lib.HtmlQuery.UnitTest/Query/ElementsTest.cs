@@ -12,6 +12,16 @@ namespace Fnio.Lib.HtmlQuery.UnitTest.Query
         public HtmlDocument Doc { get; } = HtmlParser.Parse(TestData.SimpleHtmlDoc);
 
         [TestMethod]
+        public void TestHasAttribute()
+        {
+            var nav = Doc.Body.GetChildById("navigation");
+            nav.HasAttribute("id").Should().BeTrue();
+            nav.HasAttribute("CLASS").Should().BeTrue();
+            nav.HasAttribute("Style").Should().BeFalse();
+            nav.HasAttribute().Should().BeTrue();
+        }
+
+        [TestMethod]
         public void TestHasClassName()
         {
             var nav = Doc.Body.GetChildById("navigation");
@@ -37,5 +47,6 @@ namespace Fnio.Lib.HtmlQuery.UnitTest.Query
             nav.ContainsClassNames("wrapper", "navs").Should().BeFalse();
             nav.ContainsClassNames().Should().BeFalse();
         }
+        
     }
 }
