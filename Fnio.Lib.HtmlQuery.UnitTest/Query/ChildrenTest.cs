@@ -28,17 +28,16 @@ namespace Fnio.Lib.HtmlQuery.UnitTest.Query
             Doc.Body.GetChildrenByClassName("navs").Should().HaveCount(1);
             Doc.Body.GetChildrenByClassName("section").Should().HaveCount(1);
             Doc.Body.GetChildrenByClassName("main").Should().HaveCount(1);
+            Doc.Body.GetChildrenByClassName("wrapper").Should().HaveCount(0);
         }
 
         [TestMethod]
         public void TestGetChildrenByTagName()
         {
-            var el = Doc.Body.GetChildrenByClassName("container");
-            el.Should().HaveCount(4);
-            el.Select(s => s.TagName).Should().Equal("nav", "header", "div", "footer");
-
+            Doc.Body.GetChildrenByTagName("div").Should().HaveCount(1);
             Doc.Body.GetChildrenByTagName("header").Should().HaveCount(1);
             Doc.Body.GetChildrenByTagName("footer").Should().HaveCount(1);
+            Doc.Body.GetChildrenByTagName("table").Should().HaveCount(0);
         }
 
         [TestMethod]
