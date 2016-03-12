@@ -18,18 +18,18 @@ namespace Fnio.Lib.HtmlQuery.UnitTest
                     <script src=""http://www.example.org/bar.js""></script>
                 </head>
                 <body>
-                    <nav>
+                    <nav id=""navigation"" class=""container navs"">
                         <a href=""/"">Home</a>
                     </nav>
-                    <header>
+                    <header class=""container"">
                         <img src=""logo.png"" alt=""logo""/>
                         <h1>Example</h1>
                     </header>
-                    <div>
-                        <p>foo</p>
-                        <p>bar</p>
+                    <div id=""container"" class=""container main section"">
+                        <p class=""info"">foo</p>
+                        <p class=""info"">bar</p>
                     </div>
-                    <footer></footer>
+                    <footer class=""container""></footer>
                 </body>
             </html>";
     }
