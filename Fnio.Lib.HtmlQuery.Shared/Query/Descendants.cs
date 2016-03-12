@@ -26,7 +26,7 @@ namespace Fnio.Lib.HtmlQuery
 
         public static IEnumerable<HtmlElement> GetDescendants(this HtmlElement e, Func<HtmlElement, bool> predicate)
         {
-            return e.Children().Where(predicate);
+            return e.Descendants().Where(predicate);
         }
     }
 }

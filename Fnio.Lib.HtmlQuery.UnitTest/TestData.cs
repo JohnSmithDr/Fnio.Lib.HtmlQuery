@@ -19,11 +19,17 @@ namespace Fnio.Lib.HtmlQuery.UnitTest
                 </head>
                 <body>
                     <nav id=""navigation"" class=""container navs"">
-                        <a href=""/"">Home</a>
+                        <a id=""home-link"" href=""/"">Home</a>
+                        <ul>
+                            <li><a href=""/dashboard"">Dashboard</a></li>
+                            <li><a href=""/settings"">Settings</a></li>
+                            <li><a href=""/profile"">Profile</a></li>
+                            <li><a href=""/help"">Help</a></li>
+                        </ul>
                     </nav>
                     <header class=""container"">
-                        <img src=""logo.png"" alt=""logo""/>
-                        <h1>Example</h1>
+                        <img id=""logo"" src=""logo.png"" alt=""logo""/>
+                        <h1 class=""header"">Example</h1>
                     </header>
                     <div id=""container"" class=""container main section"">
                         <p class=""info"">foo</p>
