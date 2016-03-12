@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Fnio.Lib.HtmlQuery.Node;
 
-namespace Fnio.Lib.HtmlQuery.UnitTest.Query
+namespace Fnio.Lib.HtmlQuery.UnitTest
 {
     [TestClass]
     public partial class HtmlQueryTest

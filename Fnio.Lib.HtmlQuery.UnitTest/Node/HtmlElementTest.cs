@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fnio.Lib.HtmlQuery.UnitTest.Node
+namespace Fnio.Lib.HtmlQuery.UnitTest
 {
     [TestClass]
     public class HtmlElementTest
