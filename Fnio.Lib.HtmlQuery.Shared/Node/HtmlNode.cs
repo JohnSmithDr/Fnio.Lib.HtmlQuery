@@ -9,21 +9,5 @@ namespace Fnio.Lib.HtmlQuery.Node
         public HtmlNode Parent { get; internal set; }
 
         public HtmlDocument Document { get; internal set; }
-
-        public HtmlNode NextSibling
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public HtmlNode PreviousSibling
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
     }
 }
