@@ -3,11 +3,18 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Fnio.Lib.HtmlQuery.Node;
 using FluentAssertions;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Fnio.Lib.HtmlQuery.UnitTest
 {
     public partial class HtmlQueryTest
     {
+        [TestMethod]
+        public void TestAsTraversable()
+        {
+            Doc.Head.AsTraversable().Select(s => s.TagName).Should().Equal("head", "meta", "title", "link", "script");
+        }
+
         [TestMethod]
         public void TestHasAttribute()
         {

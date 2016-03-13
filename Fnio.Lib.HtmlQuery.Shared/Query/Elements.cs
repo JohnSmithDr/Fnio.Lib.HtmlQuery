@@ -6,10 +6,15 @@ namespace Fnio.Lib.HtmlQuery
 {
     public static partial class HtmlQuery
     {
-        internal static IEnumerable<HtmlElement> ToEnumerable(this HtmlElement e)
+        public static IEnumerable<HtmlElement> AsTraversable(this HtmlElement e)
         {
             var self = new HtmlElement[] { e };
             return self.Concat(e.Descendants());
+        }
+
+        public static IEnumerable<HtmlElement> AsTraversable(this IEnumerable<HtmlElement> source)
+        {
+            return source.SelectMany(c => c.AsTraversable());
         }
 
         public static bool HasAttribute(this HtmlElement e)
