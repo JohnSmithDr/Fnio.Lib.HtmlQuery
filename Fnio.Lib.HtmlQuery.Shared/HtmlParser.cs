@@ -8,13 +8,22 @@ using System.Xml.Linq;
 
 namespace Fnio.Lib.HtmlQuery
 {
+    /// <summary>
+    /// Html parser.
+    /// </summary>
     public static class HtmlParser
     {
+        /// <summary>
+        /// Parse html document from text.
+        /// </summary>
         public static HtmlDocument Parse(string html)
         {
             return Parse(html, null);
         }
 
+        /// <summary>
+        /// Parse html document from text, filtering the specific tags.
+        /// </summary>
         public static HtmlDocument Parse(string html, IEnumerable<string> tagFilter)
         {
             html = TrimHtml(html);
@@ -49,6 +58,9 @@ namespace Fnio.Lib.HtmlQuery
             return text;
         }
 
+        /// <summary>
+        /// Parse text from xml document.
+        /// </summary>
         private static XDocument ParseXmlDocument(string html)
         {
             using (var reader = new StringReader(html))

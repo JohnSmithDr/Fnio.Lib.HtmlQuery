@@ -8,35 +8,50 @@ namespace Fnio.Lib.HtmlQuery
 {
     public static partial class HtmlQuery
     {
-        public static IEnumerable<HtmlElement> GetAncestors(this HtmlNode n)
+        /// <summary>
+        /// Get ancestor elements.
+        /// </summary>
+        public static IEnumerable<HtmlElement> Ancestors(this HtmlNode node)
         {
-            return GetAncestorsEnumerable(n).Reverse();
+            return GetAncestorsEnumerable(node).Reverse();
         }
 
-        public static IEnumerable<HtmlElement> GetAncestors(this HtmlNode n, Func<HtmlElement, bool> predicate)
+        /// <summary>
+        /// Get ancestor elements based on a predicate.
+        /// </summary>
+        public static IEnumerable<HtmlElement> Ancestors(this HtmlNode node, Func<HtmlElement, bool> predicate)
         {
-            return n.GetAncestors().Where(predicate);
+            return node.Ancestors().Where(predicate);
         }
 
-        public static HtmlElement GetAncestorById(this HtmlNode n, string id)
+        /// <summary>
+        /// Try to get an ancestor element with specific id.
+        /// </summary>
+        public static HtmlElement AncestorById(this HtmlNode node, string id)
         {
-            return n.GetAncestors().Where(s => s.Id == id).FirstOrDefault();
+            return node.Ancestors().Where(s => s.Id == id).FirstOrDefault();
         }
 
-        public static IEnumerable<HtmlElement> GetAncestorsByClassName(this HtmlNode n, string className)
+        /// <summary>
+        /// Get ancestor elements by specific class name.
+        /// </summary>
+        public static IEnumerable<HtmlElement> AncestorsByClassName(this HtmlNode node, string className)
         {
-            return n.GetAncestors().Where(c => c.ClassNames.Contains(className));
+            return node.Ancestors().Where(c => c.ClassNames.Contains(className));
         }
 
-        public static IEnumerable<HtmlElement> GetAncestorsByTagName(this HtmlNode n, string tagName)
+        /// <summary>
+        /// Get ancestor elements by specific tag name.
+        /// </summary>
+        public static IEnumerable<HtmlElement> AncestorsByTagName(this HtmlNode node, string tagName)
         {
             tagName = tagName.ToLowerInvariant();
-            return n.GetAncestors().Where(s => s.TagName == tagName);
+            return node.Ancestors().Where(s => s.TagName == tagName);
         }
 
-        private static IEnumerable<HtmlElement> GetAncestorsEnumerable(HtmlNode n)
+        private static IEnumerable<HtmlElement> GetAncestorsEnumerable(HtmlNode node)
         {
-            var parent = n.Parent as HtmlElement;
+            var parent = node.Parent as HtmlElement;
             while(parent != null)
             {
                 yield return parent;

@@ -2,6 +2,9 @@
 
 namespace Fnio.Lib.HtmlQuery
 {
+    /// <summary>
+    /// Load html document from web.
+    /// </summary>
     public static partial class HtmlLoader
     {
         private static readonly Regex MetaCharsetRegex =

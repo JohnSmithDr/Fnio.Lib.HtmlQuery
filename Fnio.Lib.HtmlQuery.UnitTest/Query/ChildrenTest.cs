@@ -9,39 +9,43 @@ namespace Fnio.Lib.HtmlQuery.UnitTest
     public partial class HtmlQueryTest
     {
         [TestMethod]
-        public void TestGetChildById()
+        public void TestChildById()
         {
-            Doc.Body.GetChildById("navigation").TagName.Should().Be("nav");
-            Doc.Body.GetChildById("container").TagName.Should().Be("div");
+            Doc.Body.ChildById("navigation").TagName.Should().Be("nav");
+            Doc.Body.ChildById("container").TagName.Should().Be("div");
         }
 
         [TestMethod]
-        public void TestGetChildrenByClassName()
+        public void TestChildrenByClassName()
         {
-            var el = Doc.Body.GetChildrenByClassName("container");
+            var el = Doc.Body.ChildrenByClassName("container");
             el.Should().HaveCount(4);
             el.Select(s => s.TagName).Should().Equal("nav", "header", "div", "footer");
 
-            Doc.Body.GetChildrenByClassName("navs").Should().HaveCount(1);
-            Doc.Body.GetChildrenByClassName("section").Should().HaveCount(1);
-            Doc.Body.GetChildrenByClassName("main").Should().HaveCount(1);
-            Doc.Body.GetChildrenByClassName("wrapper").Should().HaveCount(0);
+            Doc.Body.ChildrenByClassName("navs").Should().HaveCount(1);
+            Doc.Body.ChildrenByClassName("section").Should().HaveCount(1);
+            Doc.Body.ChildrenByClassName("main").Should().HaveCount(1);
+            Doc.Body.ChildrenByClassName("wrapper").Should().HaveCount(0);
         }
 
         [TestMethod]
-        public void TestGetChildrenByTagName()
+        public void TestChildrenByTagName()
         {
-            Doc.Body.GetChildrenByTagName("div").Should().HaveCount(1);
-            Doc.Body.GetChildrenByTagName("header").Should().HaveCount(1);
-            Doc.Body.GetChildrenByTagName("footer").Should().HaveCount(1);
-            Doc.Body.GetChildrenByTagName("table").Should().HaveCount(0);
+            Doc.Body.ChildrenByTagName("div").Should().HaveCount(1);
+            Doc.Body.ChildrenByTagName("header").Should().HaveCount(1);
+            Doc.Body.ChildrenByTagName("footer").Should().HaveCount(1);
+            Doc.Body.ChildrenByTagName("table").Should().HaveCount(0);
         }
 
         [TestMethod]
-        public void TestGetChildren()
+        public void TestChildren()
         {
-            Doc.Body.GetChildren(s => s.Id == "navigation" && s.HasClassName("navigation")).Should().HaveCount(0);
-            Doc.Body.GetChildren(s => s.Id == "container" && s.HasClassName("container")).Should().HaveCount(1);
+            var c = Doc.Body.Children();
+            c.Should().HaveCount(4);
+            c.Select(s => s.TagName).Should().Equal("nav", "header", "div", "footer");
+
+            Doc.Body.Children(s => s.Id == "navigation" && s.HasClassName("navigation")).Should().HaveCount(0);
+            Doc.Body.Children(s => s.Id == "container" && s.HasClassName("container")).Should().HaveCount(1);
         }
     }
 }

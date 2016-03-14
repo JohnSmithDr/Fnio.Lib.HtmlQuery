@@ -5,17 +5,32 @@ using System.Text;
 
 namespace Fnio.Lib.HtmlQuery.Node
 {
+    /// <summary>
+    /// Html element node.
+    /// </summary>
     public class HtmlElement : HtmlNode
     {
+        /// <summary>
+        /// Get tag name.
+        /// </summary>
         public string TagName { get; private set; }
 
+        /// <summary>
+        /// Get attributes.
+        /// </summary>
         public HtmlAttributes Attributes { get; private set; }
 
+        /// <summary>
+        /// Get id of element, if defined.
+        /// </summary>
         public string Id
         {
             get { return this.Attributes["id"]; }
         }
 
+        /// <summary>
+        /// Get all class names of element.
+        /// </summary>
         public IEnumerable<string> ClassNames
         {
             get
@@ -25,14 +40,20 @@ namespace Fnio.Lib.HtmlQuery.Node
             }
         }
 
+        /// <summary>
+        /// Get all child nodes of element.
+        /// </summary>
         public IReadOnlyList<HtmlNode> ChildNodes
         {
             get { return this._childNodes; }
         }
 
-        public string this[string key]
+        /// <summary>
+        /// Get attribute value of specific attribute name.
+        /// </summary>
+        public string this[string attributeName]
         {
-            get { return this.Attributes?[key]; }
+            get { return this.Attributes?[attributeName]; }
         }
 
         internal HtmlElement(HtmlDocument doc, string tagName, HtmlAttributes attributes, IEnumerable<HtmlNode> childNodes)
@@ -43,6 +64,9 @@ namespace Fnio.Lib.HtmlQuery.Node
             this.AppendChildNodes(childNodes);
         }
 
+        /// <summary>
+        /// Append a node to child node list.
+        /// </summary>
         public HtmlElement AppendChild(HtmlNode child)
         {
             if (child == null)
@@ -56,6 +80,9 @@ namespace Fnio.Lib.HtmlQuery.Node
             return this;
         }
 
+        /// <summary>
+        /// Append nodes to child node list.
+        /// </summary>
         public HtmlElement AppendChildNodes(IEnumerable<HtmlNode> childNodes)
         {
             if (childNodes != null)
@@ -68,19 +95,9 @@ namespace Fnio.Lib.HtmlQuery.Node
             return this;
         }
 
-        public IEnumerable<HtmlElement> Children()
-        {
-            return this.ChildNodes.OfType<HtmlElement>();
-        }
-
-        public IEnumerable<HtmlElement> Descendants()
-        {
-            return this.Children().SelectMany(e =>
-            {
-                return new HtmlElement[] { e }.Concat(e.Descendants());
-            });
-        }
-
+        /// <summary>
+        /// Get the inner text value of current element.
+        /// </summary>
         public string Text()
         {
             var texts = this.InnerTextNodes().Select(n => n.Text.Trim());
@@ -93,6 +110,9 @@ namespace Fnio.Lib.HtmlQuery.Node
             return sb.ToString().Trim();
         }
 
+        /// <summary>
+        /// Get a sequence of text nodes with depth-first traversal.
+        /// </summary>
         private IEnumerable<HtmlTextNode> InnerTextNodes()
         {
             return this.ChildNodes
@@ -105,6 +125,9 @@ namespace Fnio.Lib.HtmlQuery.Node
                 });
         }
 
+        /// <summary>
+        /// List that host all child nodes of element.
+        /// </summary>
         private List<HtmlNode> _childNodes = new List<HtmlNode>();
 
         private static readonly char[] ClassNameSeperators = new char[] { ' ' };

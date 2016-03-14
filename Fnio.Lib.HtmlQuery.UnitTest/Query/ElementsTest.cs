@@ -18,7 +18,7 @@ namespace Fnio.Lib.HtmlQuery.UnitTest
         [TestMethod]
         public void TestHasAttribute()
         {
-            var nav = Doc.Body.GetChildById("navigation");
+            var nav = Doc.Body.ChildById("navigation");
             nav.HasAttribute("id").Should().BeTrue();
             nav.HasAttribute("CLASS").Should().BeTrue();
             nav.HasAttribute("Style").Should().BeFalse();
@@ -28,7 +28,7 @@ namespace Fnio.Lib.HtmlQuery.UnitTest
         [TestMethod]
         public void TestHasClassName()
         {
-            var nav = Doc.Body.GetChildById("navigation");
+            var nav = Doc.Body.ChildById("navigation");
             nav.HasClassName("container").Should().BeTrue();
             nav.HasClassName("navs").Should().BeTrue();
             nav.HasClassName("wrapper").Should().BeFalse();
@@ -37,7 +37,7 @@ namespace Fnio.Lib.HtmlQuery.UnitTest
         [TestMethod]
         public void TestContainsClassNames()
         {
-            var nav = Doc.Body.GetChildById("navigation");
+            var nav = Doc.Body.ChildById("navigation");
             nav.ContainsClassNames(new List<string> { "container", "navs" }).Should().BeTrue();
             nav.ContainsClassNames(new List<string> { "wrapper", "navs" }).Should().BeFalse();
             nav.ContainsClassNames(new List<string> { }).Should().BeFalse();
@@ -46,7 +46,7 @@ namespace Fnio.Lib.HtmlQuery.UnitTest
         [TestMethod]
         public void TestContainsClassNamesWithParams()
         {
-            var nav = Doc.Body.GetChildById("navigation");
+            var nav = Doc.Body.ChildById("navigation");
             nav.ContainsClassNames("container", "navs").Should().BeTrue();
             nav.ContainsClassNames("wrapper", "navs").Should().BeFalse();
             nav.ContainsClassNames().Should().BeFalse();

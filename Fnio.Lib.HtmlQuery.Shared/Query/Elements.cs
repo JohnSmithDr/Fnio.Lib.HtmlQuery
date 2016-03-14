@@ -6,42 +6,63 @@ namespace Fnio.Lib.HtmlQuery
 {
     public static partial class HtmlQuery
     {
-        public static IEnumerable<HtmlElement> AsTraversable(this HtmlElement e)
+        /// <summary>
+        /// Get element sequence of depth-first traversal.
+        /// </summary>
+        public static IEnumerable<HtmlElement> AsTraversable(this HtmlElement element)
         {
-            var self = new HtmlElement[] { e };
-            return self.Concat(e.Descendants());
+            var self = new HtmlElement[] { element };
+            return self.Concat(element.Descendants());
         }
 
+        /// <summary>
+        /// Get element sequence of depth-first traversal.
+        /// </summary>
         public static IEnumerable<HtmlElement> AsTraversable(this IEnumerable<HtmlElement> source)
         {
             return source.SelectMany(c => c.AsTraversable());
         }
 
-        public static bool HasAttribute(this HtmlElement e)
+        /// <summary>
+        /// Determines whether the element has any attribute.
+        /// </summary>
+        public static bool HasAttribute(this HtmlElement element)
         {
-            return e.Attributes.Any();
+            return element.Attributes.Any();
         }
 
-        public static bool HasAttribute(this HtmlElement e, string attributeName)
+        /// <summary>
+        /// Determines whether the element has attribute with specific attribute name.
+        /// </summary>
+        public static bool HasAttribute(this HtmlElement element, string attributeName)
         {
-            return e.Attributes.GetAttribute(attributeName) != null;
+            return element.Attributes.GetAttribute(attributeName) != null;
         }
 
-        public static bool HasClassName(this HtmlElement e, string className)
+        /// <summary>
+        /// Determines whether the element has a specific class name.
+        /// </summary>
+        public static bool HasClassName(this HtmlElement element, string className)
         {
-            return e.ClassNames.Contains(className);
+            return element.ClassNames.Contains(className);
         }
 
-        public static bool ContainsClassNames(this HtmlElement e, IEnumerable<string> classNames)
+        /// <summary>
+        /// Determines whether the element has specific class names.
+        /// </summary>
+        public static bool ContainsClassNames(this HtmlElement element, IEnumerable<string> classNames)
         {
             if (!classNames.Any()) return false;
-            var classNameSet = new HashSet<string>(e.ClassNames);
+            var classNameSet = new HashSet<string>(element.ClassNames);
             return classNames.All(name => classNameSet.Contains(name));
         }
 
-        public static bool ContainsClassNames(this HtmlElement e, params string[] classNames)
+        /// <summary>
+        /// Determines whether the element has specific class names.
+        /// </summary>
+        public static bool ContainsClassNames(this HtmlElement element, params string[] classNames)
         {
-            return ContainsClassNames(e, classNames.AsEnumerable());
+            return ContainsClassNames(element, classNames.AsEnumerable());
         }
 
     }

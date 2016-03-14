@@ -8,41 +8,59 @@ namespace Fnio.Lib.HtmlQuery
 {
     public static partial class HtmlQuery
     {
-        public static IEnumerable<HtmlNode> GetSiblings(this HtmlNode n)
+        /// <summary>
+        /// Get all sibling nodes of current node.
+        /// </summary>
+        public static IEnumerable<HtmlNode> Siblings(this HtmlNode node)
         {
-            return (n.Parent as HtmlElement)?.Children().Where(c => c != n);
+            return (node.Parent as HtmlElement)?.Children().Where(c => c != node);
         }
 
-        public static IEnumerable<HtmlNode> GetSiblings(this HtmlNode n, Func<HtmlNode, bool> predicate)
+        /// <summary>
+        /// Get all sibling nodes based on a predicate.
+        /// </summary>
+        public static IEnumerable<HtmlNode> Siblings(this HtmlNode node, Func<HtmlNode, bool> predicate)
         {
-            return n.GetSiblings().Where(predicate);
+            return node.Siblings().Where(predicate);
         }
 
-        public static HtmlElement GetSiblingById(this HtmlNode n, string id)
+        /// <summary>
+        /// Try to get a sibling element node with specific id.
+        /// </summary>
+        public static HtmlElement SiblingById(this HtmlNode node, string id)
         {
-            return n.GetSiblings()?.OfType<HtmlElement>().Where(c => c.Id == id).FirstOrDefault();
+            return node.Siblings()?.OfType<HtmlElement>().Where(c => c.Id == id).FirstOrDefault();
         }
 
-        public static IEnumerable<HtmlElement> GetSiblingsByClassName(this HtmlNode n, string className)
+        /// <summary>
+        /// Get sibling element nodes with specific class name.
+        /// </summary>
+        public static IEnumerable<HtmlElement> SiblingsByClassName(this HtmlNode node, string className)
         {
-            return n.GetSiblings()?.OfType<HtmlElement>().Where(c => c.ClassNames.Contains(className));
+            return node.Siblings()?.OfType<HtmlElement>().Where(c => c.ClassNames.Contains(className));
         }
 
-        public static IEnumerable<HtmlElement> GetSiblingsByTagName(this HtmlNode n, string tagName)
+        /// <summary>
+        /// Get sibling element nodes with specific tag name.
+        /// </summary>
+        public static IEnumerable<HtmlElement> SiblingsByTagName(this HtmlNode n, string tagName)
         {
             tagName = tagName.ToLowerInvariant();
-            return n.GetSiblings()?.OfType<HtmlElement>().Where(c => c.TagName == tagName);
+            return n.Siblings()?.OfType<HtmlElement>().Where(c => c.TagName == tagName);
         }
 
-        public static IEnumerable<HtmlNode> GetNodesBeforeSelf(this HtmlNode n)
+        /// <summary>
+        /// Get sibling nodes before current node.
+        /// </summary>
+        public static IEnumerable<HtmlNode> NodesBeforeSelf(this HtmlNode node)
         {
-            var nodes = (n.Parent as HtmlElement)?.ChildNodes;
+            var nodes = (node.Parent as HtmlElement)?.ChildNodes;
 
             if (nodes == null || nodes.Any() == false) {
                 return Enumerable.Empty<HtmlNode>();
             }
 
-            var index = nodes.ToList().IndexOf(n);
+            var index = nodes.ToList().IndexOf(node);
 
             if (index < 0)
             {
@@ -52,21 +70,27 @@ namespace Fnio.Lib.HtmlQuery
             return nodes.Take(index);
         }
 
-        public static IEnumerable<HtmlNode> GetNodesBeforeSelf(this HtmlNode n, Func<HtmlNode, bool> predicate)
+        /// <summary>
+        /// Get sibling nodes before current node based on a predicate.
+        /// </summary>
+        public static IEnumerable<HtmlNode> NodesBeforeSelf(this HtmlNode node, Func<HtmlNode, bool> predicate)
         {
-            return n.GetNodesBeforeSelf().Where(predicate);
+            return node.NodesBeforeSelf().Where(predicate);
         }
 
-        public static IEnumerable<HtmlNode> GetNodesAfterSelf(this HtmlNode n)
+        /// <summary>
+        /// Get sibling nodes after current node.
+        /// </summary>
+        public static IEnumerable<HtmlNode> NodesAfterSelf(this HtmlNode node)
         {
-            var nodes = (n.Parent as HtmlElement)?.ChildNodes;
+            var nodes = (node.Parent as HtmlElement)?.ChildNodes;
 
             if (nodes == null || nodes.Any() == false)
             {
                 return Enumerable.Empty<HtmlNode>();
             }
 
-            var index = nodes.ToList().IndexOf(n);
+            var index = nodes.ToList().IndexOf(node);
 
             if (index < 0)
             {
@@ -76,40 +100,61 @@ namespace Fnio.Lib.HtmlQuery
             return nodes.Skip(index + 1);
         }
 
-        public static IEnumerable<HtmlNode> GetNodesAfterSelf(this HtmlNode n, Func<HtmlNode, bool> predicate)
+        /// <summary>
+        /// Get sibling nodes after current node based on a predicate.
+        /// </summary>
+        public static IEnumerable<HtmlNode> NodesAfterSelf(this HtmlNode node, Func<HtmlNode, bool> predicate)
         {
-            return n.GetNodesAfterSelf().Where(predicate);
+            return node.NodesAfterSelf().Where(predicate);
         }
 
-        public static IEnumerable<HtmlElement> GetElementsBeforeSelf(this HtmlNode n)
+        /// <summary>
+        /// Get sibling element nodes before current node.
+        /// </summary>
+        public static IEnumerable<HtmlElement> ElementsBeforeSelf(this HtmlNode node)
         {
-            return n.GetNodesBeforeSelf().OfType<HtmlElement>();
+            return node.NodesBeforeSelf().OfType<HtmlElement>();
         }
 
-        public static IEnumerable<HtmlElement> GetElementsBeforeSelf(this HtmlNode n, Func<HtmlElement, bool> predicate)
+        /// <summary>
+        /// Get sibling element nodes before current node based on a predicate.
+        /// </summary>
+        public static IEnumerable<HtmlElement> ElementsBeforeSelf(this HtmlNode node, Func<HtmlElement, bool> predicate)
         {
-            return n.GetNodesBeforeSelf().OfType<HtmlElement>().Where(predicate);
+            return node.NodesBeforeSelf().OfType<HtmlElement>().Where(predicate);
         }
 
-        public static IEnumerable<HtmlElement> GetElementsAfterSelf(this HtmlNode n)
+        /// <summary>
+        /// Get sibling element nodes after current node.
+        /// </summary>
+        public static IEnumerable<HtmlElement> ElementsAfterSelf(this HtmlNode node)
         {
-            return n.GetNodesAfterSelf().OfType<HtmlElement>();
+            return node.NodesAfterSelf().OfType<HtmlElement>();
 
         }
 
-        public static IEnumerable<HtmlElement> GetElementsAfterSelf(this HtmlNode n, Func<HtmlElement, bool> predicate)
+        /// <summary>
+        /// Get sibling element nodes after current node based on a predicate.
+        /// </summary>
+        public static IEnumerable<HtmlElement> ElementsAfterSelf(this HtmlNode node, Func<HtmlElement, bool> predicate)
         {
-            return n.GetElementsAfterSelf().OfType<HtmlElement>().Where(predicate);
+            return node.ElementsAfterSelf().OfType<HtmlElement>().Where(predicate);
         }
 
-        public static HtmlNode GetPreviousSibling(this HtmlNode n)
+        /// <summary>
+        /// Get previous sibling node of current node.
+        /// </summary>
+        public static HtmlNode PreviousSibling(this HtmlNode node)
         {
-            return n.GetNodesBeforeSelf().LastOrDefault();
+            return node.NodesBeforeSelf().LastOrDefault();
         }
 
-        public static HtmlNode GetNextSibling(this HtmlNode n)
+        /// <summary>
+        /// Get next sibling node of current node.
+        /// </summary>
+        public static HtmlNode NextSibling(this HtmlNode node)
         {
-            return n.GetNodesAfterSelf().FirstOrDefault();
+            return node.NodesAfterSelf().FirstOrDefault();
         }
 
     }

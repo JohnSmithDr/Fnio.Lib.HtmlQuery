@@ -43,7 +43,7 @@ namespace Fnio.Lib.HtmlQuery.UnitTest
         [TestMethod]
         public void TestGetElementsByTagName()
         {
-            var el = Doc.Body.GetDescendantsByTagName("a");
+            var el = Doc.Body.DescendantsByTagName("a");
             el.Should().HaveCount(5);
             el.Select(s => s.Text()).Should().Equal("Home", "Dashboard", "Settings", "Profile", "Help");
 

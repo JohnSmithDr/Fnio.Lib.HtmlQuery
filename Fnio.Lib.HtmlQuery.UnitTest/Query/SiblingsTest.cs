@@ -12,7 +12,7 @@ namespace Fnio.Lib.HtmlQuery.UnitTest
     public partial class HtmlQueryTest
     {
         [TestMethod]
-        public void TestGetSiblings()
+        public void TestSiblings()
         {
             var cases = new Dictionary<string, string[]>
             {
@@ -24,100 +24,48 @@ namespace Fnio.Lib.HtmlQuery.UnitTest
 
             foreach (var p in cases)
             {
-                var el = Doc.Body.GetChildrenByTagName(p.Key).FirstOrDefault();
-                var siblings = el.GetSiblings();
+                var el = Doc.Body.ChildrenByTagName(p.Key).FirstOrDefault();
+                var siblings = el.Siblings();
                 siblings.Should().HaveCount(p.Value.Length);
                 siblings.All(s => s is HtmlElement).Should().BeTrue();
                 siblings.OfType<HtmlElement>().Select(s => s.TagName).Should().Equal(p.Value);
             }
 
-            var title = Doc.Head.GetChildrenByTagName("title").FirstOrDefault();
-            title.GetSiblings(s => (s as HtmlElement)?.TagName == "meta").Should().HaveCount(1);
-            title.GetSiblings(s => (s as HtmlElement)?.TagName == "link").Should().HaveCount(1);
-            title.GetSiblings(s => (s as HtmlElement)?.TagName == "script").Should().HaveCount(1);
-            title.GetSiblings(s => (s as HtmlElement)?.TagName == "style").Should().HaveCount(0);
+            var title = Doc.Head.ChildrenByTagName("title").FirstOrDefault();
+            title.Siblings(s => (s as HtmlElement)?.TagName == "meta").Should().HaveCount(1);
+            title.Siblings(s => (s as HtmlElement)?.TagName == "link").Should().HaveCount(1);
+            title.Siblings(s => (s as HtmlElement)?.TagName == "script").Should().HaveCount(1);
+            title.Siblings(s => (s as HtmlElement)?.TagName == "style").Should().HaveCount(0);
         }
 
         [TestMethod]
-        public void TestGetSiblingById()
+        public void TestSiblingById()
         {
-            var header = Doc.Body.GetChildrenByTagName("header").FirstOrDefault();
-            header.GetSiblingById("navigation").Should().NotBeNull();
-            header.GetSiblingById("container").Should().NotBeNull();
-            header.GetSiblingById("wrapper").Should().BeNull();
+            var header = Doc.Body.ChildrenByTagName("header").FirstOrDefault();
+            header.SiblingById("navigation").Should().NotBeNull();
+            header.SiblingById("container").Should().NotBeNull();
+            header.SiblingById("wrapper").Should().BeNull();
         }
 
         [TestMethod]
-        public void TestGetSiblingsByClassName()
+        public void TestSiblingsByClassName()
         {
-            var nav = Doc.Body.GetChildById("navigation");
-            nav.GetSiblingsByClassName("container").Should().HaveCount(3);
-            nav.GetSiblingsByClassName("wrapper").Should().HaveCount(0);
+            var nav = Doc.Body.ChildById("navigation");
+            nav.SiblingsByClassName("container").Should().HaveCount(3);
+            nav.SiblingsByClassName("wrapper").Should().HaveCount(0);
         }
 
         [TestMethod]
-        public void TestGetSiblingsByTagName()
+        public void TestSiblingsByTagName()
         {
-            var nav = Doc.Body.GetChildById("navigation");
-            nav.GetSiblingsByTagName("header").Should().HaveCount(1);
-            nav.GetSiblingsByTagName("footer").Should().HaveCount(1);
-            nav.GetSiblingsByTagName("wrapper").Should().HaveCount(0);
+            var nav = Doc.Body.ChildById("navigation");
+            nav.SiblingsByTagName("header").Should().HaveCount(1);
+            nav.SiblingsByTagName("footer").Should().HaveCount(1);
+            nav.SiblingsByTagName("wrapper").Should().HaveCount(0);
         }
 
         [TestMethod]
-        public void TestGetNodesBeforeSelf()
-        {
-            var cases = new Dictionary<string, string[]>
-            {
-                { "nav", new string[] { } },
-                { "header", new string[] { "nav" } },
-                { "div", new string[] { "nav", "header" } },
-                { "footer", new string[] { "nav", "header", "div" } },
-            };
-
-            foreach (var p in cases)
-            {
-                var el = Doc.Body.GetChildrenByTagName(p.Key).FirstOrDefault();
-                var siblings = el.GetNodesBeforeSelf();
-                siblings.Should().HaveCount(p.Value.Length);
-                siblings.OfType<HtmlElement>().Select(s => s.TagName).Should().Equal(p.Value);
-            }
-
-            var title = Doc.Head.GetChildrenByTagName("title").FirstOrDefault();
-            title.GetNodesBeforeSelf(s => (s as HtmlElement)?.TagName == "meta").Should().HaveCount(1);
-            title.GetNodesBeforeSelf(s => (s as HtmlElement)?.TagName == "link").Should().HaveCount(0);
-            title.GetNodesBeforeSelf(s => (s as HtmlElement)?.TagName == "script").Should().HaveCount(0);
-            title.GetNodesBeforeSelf(s => (s as HtmlElement)?.TagName == "style").Should().HaveCount(0);
-        }
-
-        [TestMethod]
-        public void TestGetNodesAfterSelf()
-        {
-            var cases = new Dictionary<string, string[]>
-            {
-                { "nav", new string[] { "header", "div", "footer" } },
-                { "header", new string[] { "div", "footer" } },
-                { "div", new string[] { "footer" } },
-                { "footer", new string[] { } },
-            };
-
-            foreach (var p in cases)
-            {
-                var el = Doc.Body.GetChildrenByTagName(p.Key).FirstOrDefault();
-                var siblings = el.GetNodesAfterSelf();
-                siblings.Should().HaveCount(p.Value.Length);
-                siblings.OfType<HtmlElement>().Select(s => s.TagName).Should().Equal(p.Value);
-            }
-
-            var title = Doc.Head.GetChildrenByTagName("title").FirstOrDefault();
-            title.GetNodesAfterSelf(s => (s as HtmlElement)?.TagName == "meta").Should().HaveCount(0);
-            title.GetNodesAfterSelf(s => (s as HtmlElement)?.TagName == "link").Should().HaveCount(1);
-            title.GetNodesAfterSelf(s => (s as HtmlElement)?.TagName == "script").Should().HaveCount(1);
-            title.GetNodesAfterSelf(s => (s as HtmlElement)?.TagName == "style").Should().HaveCount(0);
-        }
-
-        [TestMethod]
-        public void TestGetElementsBeforeSelf()
+        public void TestNodesBeforeSelf()
         {
             var cases = new Dictionary<string, string[]>
             {
@@ -129,21 +77,21 @@ namespace Fnio.Lib.HtmlQuery.UnitTest
 
             foreach (var p in cases)
             {
-                var el = Doc.Body.GetChildrenByTagName(p.Key).FirstOrDefault();
-                var siblings = el.GetElementsBeforeSelf();
+                var el = Doc.Body.ChildrenByTagName(p.Key).FirstOrDefault();
+                var siblings = el.NodesBeforeSelf();
                 siblings.Should().HaveCount(p.Value.Length);
-                siblings.Select(s => s.TagName).Should().Equal(p.Value);
+                siblings.OfType<HtmlElement>().Select(s => s.TagName).Should().Equal(p.Value);
             }
 
-            var title = Doc.Head.GetChildrenByTagName("title").FirstOrDefault();
-            title.GetElementsBeforeSelf(s => s.TagName == "meta").Should().HaveCount(1);
-            title.GetElementsBeforeSelf(s => s.TagName == "link").Should().HaveCount(0);
-            title.GetElementsBeforeSelf(s => s.TagName == "script").Should().HaveCount(0);
-            title.GetElementsBeforeSelf(s => s.TagName == "style").Should().HaveCount(0);
+            var title = Doc.Head.ChildrenByTagName("title").FirstOrDefault();
+            title.NodesBeforeSelf(s => (s as HtmlElement)?.TagName == "meta").Should().HaveCount(1);
+            title.NodesBeforeSelf(s => (s as HtmlElement)?.TagName == "link").Should().HaveCount(0);
+            title.NodesBeforeSelf(s => (s as HtmlElement)?.TagName == "script").Should().HaveCount(0);
+            title.NodesBeforeSelf(s => (s as HtmlElement)?.TagName == "style").Should().HaveCount(0);
         }
 
         [TestMethod]
-        public void TestGetElementsAfterSelf()
+        public void TestNodesAfterSelf()
         {
             var cases = new Dictionary<string, string[]>
             {
@@ -155,21 +103,73 @@ namespace Fnio.Lib.HtmlQuery.UnitTest
 
             foreach (var p in cases)
             {
-                var el = Doc.Body.GetChildrenByTagName(p.Key).FirstOrDefault();
-                var siblings = el.GetElementsAfterSelf();
+                var el = Doc.Body.ChildrenByTagName(p.Key).FirstOrDefault();
+                var siblings = el.NodesAfterSelf();
+                siblings.Should().HaveCount(p.Value.Length);
+                siblings.OfType<HtmlElement>().Select(s => s.TagName).Should().Equal(p.Value);
+            }
+
+            var title = Doc.Head.ChildrenByTagName("title").FirstOrDefault();
+            title.NodesAfterSelf(s => (s as HtmlElement)?.TagName == "meta").Should().HaveCount(0);
+            title.NodesAfterSelf(s => (s as HtmlElement)?.TagName == "link").Should().HaveCount(1);
+            title.NodesAfterSelf(s => (s as HtmlElement)?.TagName == "script").Should().HaveCount(1);
+            title.NodesAfterSelf(s => (s as HtmlElement)?.TagName == "style").Should().HaveCount(0);
+        }
+
+        [TestMethod]
+        public void TestElementsBeforeSelf()
+        {
+            var cases = new Dictionary<string, string[]>
+            {
+                { "nav", new string[] { } },
+                { "header", new string[] { "nav" } },
+                { "div", new string[] { "nav", "header" } },
+                { "footer", new string[] { "nav", "header", "div" } },
+            };
+
+            foreach (var p in cases)
+            {
+                var el = Doc.Body.ChildrenByTagName(p.Key).FirstOrDefault();
+                var siblings = el.ElementsBeforeSelf();
                 siblings.Should().HaveCount(p.Value.Length);
                 siblings.Select(s => s.TagName).Should().Equal(p.Value);
             }
 
-            var title = Doc.Head.GetChildrenByTagName("title").FirstOrDefault();
-            title.GetElementsAfterSelf(s => s.TagName == "meta").Should().HaveCount(0);
-            title.GetElementsAfterSelf(s => s.TagName == "link").Should().HaveCount(1);
-            title.GetElementsAfterSelf(s => s.TagName == "script").Should().HaveCount(1);
-            title.GetElementsAfterSelf(s => s.TagName == "style").Should().HaveCount(0);
+            var title = Doc.Head.ChildrenByTagName("title").FirstOrDefault();
+            title.ElementsBeforeSelf(s => s.TagName == "meta").Should().HaveCount(1);
+            title.ElementsBeforeSelf(s => s.TagName == "link").Should().HaveCount(0);
+            title.ElementsBeforeSelf(s => s.TagName == "script").Should().HaveCount(0);
+            title.ElementsBeforeSelf(s => s.TagName == "style").Should().HaveCount(0);
         }
 
         [TestMethod]
-        public void TestGetPreviousSibling()
+        public void TestElementsAfterSelf()
+        {
+            var cases = new Dictionary<string, string[]>
+            {
+                { "nav", new string[] { "header", "div", "footer" } },
+                { "header", new string[] { "div", "footer" } },
+                { "div", new string[] { "footer" } },
+                { "footer", new string[] { } },
+            };
+
+            foreach (var p in cases)
+            {
+                var el = Doc.Body.ChildrenByTagName(p.Key).FirstOrDefault();
+                var siblings = el.ElementsAfterSelf();
+                siblings.Should().HaveCount(p.Value.Length);
+                siblings.Select(s => s.TagName).Should().Equal(p.Value);
+            }
+
+            var title = Doc.Head.ChildrenByTagName("title").FirstOrDefault();
+            title.ElementsAfterSelf(s => s.TagName == "meta").Should().HaveCount(0);
+            title.ElementsAfterSelf(s => s.TagName == "link").Should().HaveCount(1);
+            title.ElementsAfterSelf(s => s.TagName == "script").Should().HaveCount(1);
+            title.ElementsAfterSelf(s => s.TagName == "style").Should().HaveCount(0);
+        }
+
+        [TestMethod]
+        public void TestPreviousSibling()
         {
             var cases = new Dictionary<string, string>
             {
@@ -181,8 +181,8 @@ namespace Fnio.Lib.HtmlQuery.UnitTest
 
             foreach (var p in cases)
             {
-                var el = Doc.Body.GetChildrenByTagName(p.Key).FirstOrDefault();
-                var prev = el.GetPreviousSibling();
+                var el = Doc.Body.ChildrenByTagName(p.Key).FirstOrDefault();
+                var prev = el.PreviousSibling();
 
                 if (string.IsNullOrEmpty(p.Value))
                 {
@@ -195,7 +195,7 @@ namespace Fnio.Lib.HtmlQuery.UnitTest
         }
 
         [TestMethod]
-        public void TestGetNextSibling()
+        public void TestNextSibling()
         {
             var cases = new Dictionary<string, string>
             {
@@ -207,8 +207,8 @@ namespace Fnio.Lib.HtmlQuery.UnitTest
 
             foreach (var p in cases)
             {
-                var el = Doc.Body.GetChildrenByTagName(p.Key).FirstOrDefault();
-                var next = el.GetNextSibling();
+                var el = Doc.Body.ChildrenByTagName(p.Key).FirstOrDefault();
+                var next = el.NextSibling();
 
                 if (string.IsNullOrEmpty(p.Value))
                 {

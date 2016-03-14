@@ -5,16 +5,28 @@ using System.Text;
 
 namespace Fnio.Lib.HtmlQuery.Node
 {
+    /// <summary>
+    /// Html attribute collection.
+    /// </summary>
     public class HtmlAttributes : IEnumerable<HtmlAttribute>
     {
+        /// <summary>
+        /// Dictionary that host all attributes.
+        /// </summary>
         private Dictionary<string, HtmlAttribute> _attrDict = new Dictionary<string, HtmlAttribute>();
 
-        public string this[string key]
+        /// <summary>
+        /// Get attribute value by attribute name, returns null if not there.
+        /// </summary>
+        public string this[string attributeName]
         {
-            get { return this.GetAttribute(key)?.Value; }
-            set { this.SetAttribute(new HtmlAttribute(key, value)); }
+            get { return this.GetAttribute(attributeName)?.Value; }
+            set { this.SetAttribute(new HtmlAttribute(attributeName, value)); }
         }
 
+        /// <summary>
+        /// Get the number of attributes in current collection.
+        /// </summary>
         public int Count
         {
             get { return this._attrDict.Count; }
@@ -33,6 +45,9 @@ namespace Fnio.Lib.HtmlQuery.Node
             }
         }
 
+        /// <summary>
+        /// Get a attribute by specific name.
+        /// </summary>
         public HtmlAttribute GetAttribute(string name)
         {
             string key = name.ToLowerInvariant();
@@ -42,12 +57,18 @@ namespace Fnio.Lib.HtmlQuery.Node
             return value;
         }
 
+        /// <summary>
+        /// Add or replace the attribute in current collection.
+        /// </summary>
         public void SetAttribute(HtmlAttribute attribute)
         {
             string key = attribute.Name.ToLowerInvariant();
             this._attrDict[key] = attribute;
         }
 
+        /// <summary>
+        /// Add or replace the attribute in current collection.
+        /// </summary>
         public void SetAttribute(string name, string value)
         {
             this.SetAttribute(new HtmlAttribute(name, value));
