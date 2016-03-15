@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Fnio.Lib.HtmlQuery.Node;
 using FluentAssertions;
 
-namespace Fnio.Lib.HtmlQuery.UnitTest
+namespace Fnio.Lib.HtmlQuery.Windows.UnitTest
 {
     [TestClass]
     public class HtmlAttributeTest

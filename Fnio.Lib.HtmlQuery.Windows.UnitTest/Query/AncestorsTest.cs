@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fnio.Lib.HtmlQuery.UnitTest
+namespace Fnio.Lib.HtmlQuery.Windows.UnitTest
 {
     public partial class HtmlQueryTest
     {

@@ -5,7 +5,7 @@ using FluentAssertions;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Fnio.Lib.HtmlQuery.UnitTest
+namespace Fnio.Lib.HtmlQuery.Windows.UnitTest
 {
     public partial class HtmlQueryTest
     {

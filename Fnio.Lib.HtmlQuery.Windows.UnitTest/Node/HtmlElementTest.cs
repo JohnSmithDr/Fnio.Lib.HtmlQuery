@@ -2,12 +2,8 @@
 using Fnio.Lib.HtmlQuery.Node;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Fnio.Lib.HtmlQuery.UnitTest
+namespace Fnio.Lib.HtmlQuery.Windows.UnitTest
 {
     [TestClass]
     public class HtmlElementTest

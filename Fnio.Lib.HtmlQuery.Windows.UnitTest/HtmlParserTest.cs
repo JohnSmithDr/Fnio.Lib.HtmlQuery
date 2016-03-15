@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FluentAssertions;
 using System.Linq;
 
-namespace Fnio.Lib.HtmlQuery.UnitTest
+namespace Fnio.Lib.HtmlQuery.Windows.UnitTest
 {
     [TestClass]
     public class HtmlParserTest

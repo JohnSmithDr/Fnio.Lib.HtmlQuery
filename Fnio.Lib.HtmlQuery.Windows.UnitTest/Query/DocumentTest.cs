@@ -4,7 +4,7 @@ using Fnio.Lib.HtmlQuery.Node;
 using FluentAssertions;
 using System.Linq;
 
-namespace Fnio.Lib.HtmlQuery.UnitTest
+namespace Fnio.Lib.HtmlQuery.Windows.UnitTest
 {
     public partial class HtmlQueryTest
     {
