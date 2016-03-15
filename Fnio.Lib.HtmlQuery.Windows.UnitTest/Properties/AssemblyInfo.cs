@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("Fnio.Lib.HtmlQuery.UnitTest")]
+[assembly: AssemblyTitle("Fnio.Lib.HtmlQuery.Windows.UnitTest")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Fnio.Lib.HtmlQuery.UnitTest")]
+[assembly: AssemblyProduct("Fnio.Lib.HtmlQuery.Windows.UnitTest")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("0f4745bd-5313-4fae-beff-7c1659c5301e")]
+[assembly: Guid("99caa8ab-57ac-48a0-8d97-290c574577f8")]
 
 // 程序集的版本信息由下列四个值组成: 
 //
