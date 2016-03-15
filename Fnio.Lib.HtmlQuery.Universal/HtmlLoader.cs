@@ -1,13 +1,12 @@
-﻿using System;
+﻿using Fnio.Lib.HtmlQuery.Node;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
-using System.Text.RegularExpressions;
-using Windows.Web.Http;
 using Windows.Foundation;
-using Fnio.Lib.HtmlQuery.Node;
+using Windows.Web.Http;
 
 namespace Fnio.Lib.HtmlQuery
 {

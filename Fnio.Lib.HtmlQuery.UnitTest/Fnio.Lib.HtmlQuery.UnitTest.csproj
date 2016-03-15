@@ -62,6 +62,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="HtmlLoaderTest.cs" />
     <Compile Include="HtmlParserTest.cs" />
     <Compile Include="Node\HtmlAttributesTest.cs" />
     <Compile Include="Node\HtmlAttributeTest.cs" />
