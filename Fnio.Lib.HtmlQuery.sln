@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fnio.Lib.HtmlQuery.Portable
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fnio.Lib.HtmlQuery.Windows.UnitTest", "Fnio.Lib.HtmlQuery.Windows.UnitTest\Fnio.Lib.HtmlQuery.Windows.UnitTest.csproj", "{99CAA8AB-57AC-48A0-8D97-290C574577F8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fnio.Lib.HtmlQuery.Universal.UnitTest", "Fnio.Lib.HtmlQuery.Universal.UnitTest\Fnio.Lib.HtmlQuery.Universal.UnitTest.csproj", "{E83E0859-89BF-4DA4-B796-A4188803F959}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Fnio.Lib.HtmlQuery.Shared\Fnio.Lib.HtmlQuery.Shared.projitems*{f3a60c8e-bd0e-48c2-899c-dfbdd0852b51}*SharedItemsImports = 13
@@ -95,6 +97,26 @@ Global
 		{99CAA8AB-57AC-48A0-8D97-290C574577F8}.Release|x64.Build.0 = Release|Any CPU
 		{99CAA8AB-57AC-48A0-8D97-290C574577F8}.Release|x86.ActiveCfg = Release|Any CPU
 		{99CAA8AB-57AC-48A0-8D97-290C574577F8}.Release|x86.Build.0 = Release|Any CPU
+		{E83E0859-89BF-4DA4-B796-A4188803F959}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{E83E0859-89BF-4DA4-B796-A4188803F959}.Debug|ARM.ActiveCfg = Debug|ARM
+		{E83E0859-89BF-4DA4-B796-A4188803F959}.Debug|ARM.Build.0 = Debug|ARM
+		{E83E0859-89BF-4DA4-B796-A4188803F959}.Debug|ARM.Deploy.0 = Debug|ARM
+		{E83E0859-89BF-4DA4-B796-A4188803F959}.Debug|x64.ActiveCfg = Debug|x64
+		{E83E0859-89BF-4DA4-B796-A4188803F959}.Debug|x64.Build.0 = Debug|x64
+		{E83E0859-89BF-4DA4-B796-A4188803F959}.Debug|x64.Deploy.0 = Debug|x64
+		{E83E0859-89BF-4DA4-B796-A4188803F959}.Debug|x86.ActiveCfg = Debug|x86
+		{E83E0859-89BF-4DA4-B796-A4188803F959}.Debug|x86.Build.0 = Debug|x86
+		{E83E0859-89BF-4DA4-B796-A4188803F959}.Debug|x86.Deploy.0 = Debug|x86
+		{E83E0859-89BF-4DA4-B796-A4188803F959}.Release|Any CPU.ActiveCfg = Release|x86
+		{E83E0859-89BF-4DA4-B796-A4188803F959}.Release|ARM.ActiveCfg = Release|ARM
+		{E83E0859-89BF-4DA4-B796-A4188803F959}.Release|ARM.Build.0 = Release|ARM
+		{E83E0859-89BF-4DA4-B796-A4188803F959}.Release|ARM.Deploy.0 = Release|ARM
+		{E83E0859-89BF-4DA4-B796-A4188803F959}.Release|x64.ActiveCfg = Release|x64
+		{E83E0859-89BF-4DA4-B796-A4188803F959}.Release|x64.Build.0 = Release|x64
+		{E83E0859-89BF-4DA4-B796-A4188803F959}.Release|x64.Deploy.0 = Release|x64
+		{E83E0859-89BF-4DA4-B796-A4188803F959}.Release|x86.ActiveCfg = Release|x86
+		{E83E0859-89BF-4DA4-B796-A4188803F959}.Release|x86.Build.0 = Release|x86
+		{E83E0859-89BF-4DA4-B796-A4188803F959}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
