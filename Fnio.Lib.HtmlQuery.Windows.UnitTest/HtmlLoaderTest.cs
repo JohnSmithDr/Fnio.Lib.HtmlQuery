@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Fnio.Lib.HtmlQuery.Windows.UnitTest
@@ -11,15 +12,35 @@ namespace Fnio.Lib.HtmlQuery.Windows.UnitTest
         [TestMethod]
         public async Task TestLoadHtmlAsync()
         {
-            var html = await HtmlLoader.LoadHtmlAsync(new Uri("http://www.baidu.com"));
-            html.Should().MatchRegex(@"<title>百度一下，你就知道<\/title>");
+            using (var httpClient = new HttpClient())
+            {
+                var html = await HtmlLoader.LoadHtmlAsync(httpClient, new Uri("http://www.baidu.com"));
+                html.Should().MatchRegex(@"<title>百度一下，你就知道<\/title>");
+            }
         }
 
         [TestMethod]
         public async Task TestLoadHtmlDocumentAsync()
         {
-            var htmlDoc = await HtmlLoader.LoadHtmlDocumentAsync(new Uri("http://www.baidu.com"));
-            htmlDoc.Title.Should().Match("百度一下，你就知道");
+            using (var httpClient = new HttpClient())
+            {
+                var htmlDoc = await HtmlLoader.LoadHtmlDocumentAsync(httpClient, new Uri("http://www.baidu.com"));
+                htmlDoc.Title.Should().Match("百度一下，你就知道");
+            }
+        }
+
+        [TestMethod]
+        public async Task TestLoadHtmlDocumentWithTagFilterAsync()
+        {
+            using (var httpClient = new HttpClient())
+            {
+                var tagFilters = new string[] { "script", "link", "style" };
+                var htmlDoc = await HtmlLoader.LoadHtmlDocumentAsync(httpClient, new Uri("http://www.baidu.com"), tagFilters);
+                htmlDoc.Title.Should().Match("百度一下，你就知道");
+                htmlDoc.GetElementsByTagName("script").Should().HaveCount(0);
+                htmlDoc.GetElementsByTagName("link").Should().HaveCount(0);
+                htmlDoc.GetElementsByTagName("style").Should().HaveCount(0);
+            }
         }
     }
 }

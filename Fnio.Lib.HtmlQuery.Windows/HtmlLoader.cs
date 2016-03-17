@@ -14,32 +14,13 @@ namespace Fnio.Lib.HtmlQuery
         /// <summary>
         /// Load html text from url.
         /// </summary>
-        public static Task<string> LoadHtmlAsync(Uri uri)
-        {
-            return LoadHtmlAsync(uri, CancellationToken.None);
-        }
-
-        /// <summary>
-        /// Load html text from url.
-        /// </summary>
-        public static async Task<string> LoadHtmlAsync(Uri uri, CancellationToken cancellationToken)
-        {
-            using (var httpClient = new HttpClient())
-            {
-                return await LoadHtmlAsync(httpClient, uri, cancellationToken);
-            }
-        }
-
-        /// <summary>
-        /// Load html text from url, with http client.
-        /// </summary>
         public static Task<string> LoadHtmlAsync(HttpClient httpClient, Uri uri)
         {
             return LoadHtmlAsync(httpClient, uri, CancellationToken.None);
         }
 
         /// <summary>
-        /// Load html text from url, with http client.
+        /// Load html text from url.
         /// </summary>
         public static async Task<string> LoadHtmlAsync(HttpClient httpClient, Uri uri, CancellationToken cancellationToken)
         {
@@ -83,32 +64,13 @@ namespace Fnio.Lib.HtmlQuery
         /// <summary>
         /// Load html document from url.
         /// </summary>
-        public static Task<HtmlDocument> LoadHtmlDocumentAsync(Uri uri)
-        {
-            return LoadHtmlDocumentAsync(uri, CancellationToken.None);
-        }
-
-        /// <summary>
-        /// Load html document from url.
-        /// </summary>
-        public static async Task<HtmlDocument> LoadHtmlDocumentAsync(Uri uri, CancellationToken cancellationToken)
-        {
-            using (var httpClient = new HttpClient())
-            {
-                return await LoadHtmlDocumentAsync(httpClient, uri, cancellationToken, null);
-            }
-        }
-
-        /// <summary>
-        /// Load html document from url, with http client.
-        /// </summary>
         public static Task<HtmlDocument> LoadHtmlDocumentAsync(HttpClient httpClient, Uri uri)
         {
             return LoadHtmlDocumentAsync(httpClient, uri, CancellationToken.None, null);
         }
 
         /// <summary>
-        /// Load html document from url, with http client.
+        /// Load html document from url.
         /// </summary>
         public static Task<HtmlDocument> LoadHtmlDocumentAsync(HttpClient httpClient, Uri uri, CancellationToken cancellationToken)
         {
@@ -116,7 +78,7 @@ namespace Fnio.Lib.HtmlQuery
         }
 
         /// <summary>
-        /// Load html document from url, with http client and tag filters.
+        /// Load html document from url, with tag filters.
         /// </summary>
         public static Task<HtmlDocument> LoadHtmlDocumentAsync(HttpClient httpClient, Uri uri, IEnumerable<string> tagFilters)
         {
@@ -124,7 +86,7 @@ namespace Fnio.Lib.HtmlQuery
         }
 
         /// <summary>
-        /// Load html document from url, with http client and tag filters.
+        /// Load html document from url, with tag filters.
         /// </summary>
         public static async Task<HtmlDocument> LoadHtmlDocumentAsync(HttpClient httpClient, Uri uri, CancellationToken cancellationToken, IEnumerable<string> tagFilters)
         {
