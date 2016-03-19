@@ -20,14 +20,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)Node\HtmlElement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Node\HtmlNode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Node\HtmlTextNode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Parser\TokenQueue.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Query\Ancestors.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Query\Descendants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Query\Children.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Query\Document.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Query\Elements.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Query\Siblings.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Parser\" />
   </ItemGroup>
 </Project>
