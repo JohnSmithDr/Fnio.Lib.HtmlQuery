@@ -9,8 +9,9 @@
     <Import_RootNamespace>Fnio.Lib.HtmlQuery</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\HtmlDomException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\HtmlParseException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HtmlAttributeExtensions.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)HtmlDomException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HtmlLoader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HtmlParser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Node\HtmlAttributes.cs" />
@@ -25,5 +26,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Query\Document.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Query\Elements.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Query\Siblings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Parser\" />
   </ItemGroup>
 </Project>
