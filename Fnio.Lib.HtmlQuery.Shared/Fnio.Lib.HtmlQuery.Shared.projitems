@@ -11,6 +11,7 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Exceptions\HtmlDomException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Exceptions\HtmlParseException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\SelectorParseException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HtmlAttributeExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HtmlLoader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HtmlParser.cs" />
@@ -27,5 +28,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Query\Document.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Query\Elements.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Query\Siblings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Selector\Evaluator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Selector\QueryParser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils.cs" />
   </ItemGroup>
 </Project>

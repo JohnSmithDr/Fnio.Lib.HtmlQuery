@@ -18,7 +18,7 @@ namespace Fnio.Lib.HtmlQuery.Node
         /// <summary>
         /// Get attributes.
         /// </summary>
-        public HtmlAttributes Attributes { get; private set; }
+        public HtmlAttributes Attributes { get; }
 
         /// <summary>
         /// Get id of element, if defined.
@@ -128,7 +128,7 @@ namespace Fnio.Lib.HtmlQuery.Node
         /// <summary>
         /// List that host all child nodes of element.
         /// </summary>
-        private List<HtmlNode> _childNodes = new List<HtmlNode>();
+        private readonly List<HtmlNode> _childNodes = new List<HtmlNode>();
 
         private static readonly char[] ClassNameSeperators = new char[] { ' ' };
     }

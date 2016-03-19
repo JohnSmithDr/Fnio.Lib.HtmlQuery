@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Fnio.Lib.HtmlQuery
 {
@@ -13,7 +12,7 @@ namespace Fnio.Lib.HtmlQuery
         /// </summary>
         public static IEnumerable<HtmlNode> Siblings(this HtmlNode node)
         {
-            return (node.Parent as HtmlElement)?.Children().Where(c => c != node);
+            return (node.Parent as HtmlElement)?.ChildNodes.Where(c => c != node);
         }
 
         /// <summary>
