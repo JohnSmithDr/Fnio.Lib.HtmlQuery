@@ -1,8 +1,8 @@
-﻿using Fnio.Lib.HtmlQuery.Node;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Fnio.Lib.HtmlQuery.Node;
 
 namespace Fnio.Lib.HtmlQuery.Selector
 {
@@ -11,8 +11,6 @@ namespace Fnio.Lib.HtmlQuery.Selector
     /// </summary>
     public abstract class Evaluator
     {
-        protected Evaluator() { }
-
         /// <summary>
         /// Test wheter the element meets the evaluator's requirements.
         /// </summary>
@@ -83,7 +81,7 @@ namespace Fnio.Lib.HtmlQuery.Selector
 
             public Attribute(string key)
             {
-                this.AttributeName = key;
+                AttributeName = key;
             }
 
             public override bool Matches(HtmlElement root, HtmlElement element) 
@@ -98,11 +96,11 @@ namespace Fnio.Lib.HtmlQuery.Selector
         /// </summary>
         public sealed class AttributeStarting : Evaluator
         {
-            private string AttributePrefix;
+            private string AttributePrefix { get; }
 
             public AttributeStarting(string attrPrefix)
             {
-                this.AttributePrefix = attrPrefix;
+                AttributePrefix = attrPrefix;
             }
 
             public override bool Matches(HtmlElement root, HtmlElement element) 
@@ -199,7 +197,7 @@ namespace Fnio.Lib.HtmlQuery.Selector
             public override bool Matches(HtmlElement root, HtmlElement element)
                 => element.HasAttribute(Key) && Pattern.IsMatch(element[Key]);
 
-            public override string ToString() => $"[{Key}~={Pattern.ToString()}]";
+            public override string ToString() => $"[{Key}~={Pattern}]";
         }
 
         /// <summary>
@@ -232,7 +230,7 @@ namespace Fnio.Lib.HtmlQuery.Selector
         /// </summary>
         public sealed class AllElements : Evaluator
         {
-            public override bool Matches(HtmlElement root, HtmlElement HtmlElement) => true;
+            public override bool Matches(HtmlElement root, HtmlElement element) => true;
 
             public override string ToString() => "*";
         }
@@ -294,7 +292,7 @@ namespace Fnio.Lib.HtmlQuery.Selector
         {
             protected int Index { get; }
 
-            public IndexEvaluator(int index)
+            protected IndexEvaluator(int index)
             {
                 Index = index;
             }
@@ -346,7 +344,7 @@ namespace Fnio.Lib.HtmlQuery.Selector
     {
         public List<Evaluator> Evaluators { get; }
 
-        private CombiningEvaluator() : base()
+        private CombiningEvaluator()
         {
             Evaluators = new List<Evaluator>();
         }
@@ -377,19 +375,20 @@ namespace Fnio.Lib.HtmlQuery.Selector
 
         public sealed class Or : CombiningEvaluator
         {
-            public Or(IEnumerable<Evaluator> evaluators) : base()
+            public Or(IEnumerable<Evaluator> evaluators)
             {
-                if (evaluators.Count() > 1)
+                var evaluatorArr = evaluators as Evaluator[] ?? evaluators.ToArray();
+                if (evaluatorArr.Length > 1)
                 {
-                    Evaluators.Add(new And(evaluators));
+                    Evaluators.Add(new And(evaluatorArr));
                 }
                 else
                 {
-                    Evaluators.AddRange(evaluators);
+                    Evaluators.AddRange(evaluatorArr);
                 }
             }
 
-            public Or() : base() { }
+            public Or() { }
 
             public void Add(Evaluator e)
             {
@@ -407,9 +406,9 @@ namespace Fnio.Lib.HtmlQuery.Selector
     /// </summary>
     public abstract class StructuralEvaluator : Evaluator
     {
-        Evaluator InnerEvaluator { get; }
+        protected Evaluator InnerEvaluator { get; }
 
-        public StructuralEvaluator(Evaluator evaluator)
+        protected StructuralEvaluator(Evaluator evaluator)
         {
             InnerEvaluator = evaluator;
         }

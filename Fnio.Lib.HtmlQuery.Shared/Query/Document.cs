@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Fnio.Lib.HtmlQuery
 {
@@ -11,18 +10,14 @@ namespace Fnio.Lib.HtmlQuery
         /// <summary>
         /// Get a element node with specific id.
         /// </summary>
-        public static HtmlElement GetElementById(this HtmlDocument doc, string id)
-        {
-            return doc.Root?.AsTraversable().Where(n => n.Id == id).FirstOrDefault();
-        }
+        public static HtmlElement GetElementById(this HtmlDocument doc, string id) 
+            => doc.Root?.AsTraversable().FirstOrDefault(n => n.Id == id);
 
         /// <summary>
         /// Get element nodes with specific class name.
         /// </summary>
-        public static IEnumerable<HtmlElement> GetElementsByClassName(this HtmlDocument doc, string className)
-        {
-            return doc.Root?.AsTraversable().Where(n => n.ClassNames.Contains(className));
-        }
+        public static IEnumerable<HtmlElement> GetElementsByClassName(this HtmlDocument doc, string className) 
+            => doc.Root?.AsTraversable().Where(n => n.ClassNames.Contains(className));
 
         /// <summary>
         /// Get elements node with specific tag name.
@@ -37,8 +32,7 @@ namespace Fnio.Lib.HtmlQuery
         /// Get elements base on a predicate.
         /// </summary>
         public static IEnumerable<HtmlElement> GetElements(this HtmlDocument doc, Func<HtmlElement, bool> predicate)
-        {
-            return doc.Root?.AsTraversable().Where(predicate);
-        }
+            => doc.Root?.AsTraversable().Where(predicate);
+
     }
 }

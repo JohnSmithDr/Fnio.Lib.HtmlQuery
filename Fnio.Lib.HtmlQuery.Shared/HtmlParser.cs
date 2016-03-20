@@ -1,4 +1,5 @@
-﻿using CenterCLR.Sgml;
+﻿using System;
+using CenterCLR.Sgml;
 using Fnio.Lib.HtmlQuery.Node;
 using System.Collections.Generic;
 using System.IO;
@@ -16,10 +17,7 @@ namespace Fnio.Lib.HtmlQuery
         /// <summary>
         /// Parse html document from text.
         /// </summary>
-        public static HtmlDocument Parse(string html)
-        {
-            return Parse(html, null);
-        }
+        public static HtmlDocument Parse(string html) => Parse(html, null);
 
         /// <summary>
         /// Parse html document from text, filtering the specific tags.
@@ -43,11 +41,11 @@ namespace Fnio.Lib.HtmlQuery
 
         private static string TrimHtml(string text)
         {
-            var htmlEndTags = new string[] { "</html>", "</HTML>" };
+            var htmlEndTags = new[] { "</html>", "</HTML>" };
 
             foreach (var tag in htmlEndTags)
             {
-                var index = text.IndexOf(tag);
+                var index = text.IndexOf(tag, StringComparison.Ordinal);
 
                 if (index > 0 && text.Length > index + tag.Length)
                 {
@@ -73,8 +71,7 @@ namespace Fnio.Lib.HtmlQuery
         {
             return xdoc
                 .Descendants()
-                .Where(n => "html" == n.Name.LocalName.ToLowerInvariant())
-                .FirstOrDefault();
+                .FirstOrDefault(n => "html" == n.Name.LocalName.ToLowerInvariant());
         }
 
         private static HtmlAttributes GetHtmlAttributes(this XElement x)

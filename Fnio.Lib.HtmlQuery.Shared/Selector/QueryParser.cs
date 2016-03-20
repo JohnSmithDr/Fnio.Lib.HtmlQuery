@@ -1,9 +1,8 @@
-﻿using Fnio.Lib.HtmlQuery.Parser;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using Fnio.Lib.HtmlQuery.Parser;
 
 namespace Fnio.Lib.HtmlQuery.Selector
 {
@@ -12,27 +11,26 @@ namespace Fnio.Lib.HtmlQuery.Selector
     /// </summary>
     public class QueryParser
     {
-        private readonly static string[] combinators = { ",", ">", "+", "~", " " };
+        private static readonly string[] Combinators = { ",", ">", "+", "~", " " };
 
-        private TokenQueue _tq;
-        private string _query;
-        private List<Evaluator> _evals = new List<Evaluator>();
+        private readonly TokenQueue _tq;
+        private readonly string _query;
+        private readonly List<Evaluator> _evals = new List<Evaluator>();
 
         /// <summary>
         /// Create a new QueryParser.
         /// </summary>
-        /// <param name="query">query CSS query</param>
+        /// <param name="query">css query selector</param>
         private QueryParser(string query)
         {
-            this._query = query;
-            this._tq = new TokenQueue(query);
+            _query = query;
+            _tq = new TokenQueue(query);
         }
 
         /// <summary>
-        /// Parse a CSS query into an Evaluator.
+        /// Parse a css query selector into an Evaluator.
         /// </summary>
-        /// <param name="query">query CSS query</param>
-        /// <returns>Evaluator</returns>
+        /// <param name="query">css query selector</param>
         public static Evaluator Parse(string query)
         {
             QueryParser p = new QueryParser(query);
@@ -47,7 +45,7 @@ namespace Fnio.Lib.HtmlQuery.Selector
         {
             _tq.ConsumeWhitespace();
 
-            if (_tq.MatchesAny(combinators))
+            if (_tq.MatchesAny(Combinators))
             { 
                 // if starts with a combinator, use root as elements
                 //
@@ -65,7 +63,7 @@ namespace Fnio.Lib.HtmlQuery.Selector
                 //
                 bool seenWhite = _tq.ConsumeWhitespace();
 
-                if (_tq.MatchesAny(combinators))
+                if (_tq.MatchesAny(Combinators))
                 {
                     // group or
                     //
@@ -187,7 +185,7 @@ namespace Fnio.Lib.HtmlQuery.Selector
                 {
                     sq.Append("[").Append(_tq.ChompBalanced('[', ']')).Append("]");
                 }
-                else if (_tq.MatchesAny(combinators))
+                else if (_tq.MatchesAny(Combinators))
                 {
                     break;
                 }

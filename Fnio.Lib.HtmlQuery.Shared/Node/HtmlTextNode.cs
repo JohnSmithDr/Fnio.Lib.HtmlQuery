@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Fnio.Lib.HtmlQuery.Node
+﻿namespace Fnio.Lib.HtmlQuery.Node
 {
     /// <summary>
     /// Html text node.
@@ -14,10 +10,15 @@ namespace Fnio.Lib.HtmlQuery.Node
         /// </summary>
         public string Text { get; private set; }
 
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="doc">the document that the node belongs to</param>
+        /// <param name="text">text of the node</param>
         internal HtmlTextNode(HtmlDocument doc, string text)
         {
-            this.Document = doc;
-            this.Text = text;
+            Document = doc;
+            Text = text;
         }
     }
 }

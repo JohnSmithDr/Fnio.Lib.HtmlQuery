@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Fnio.Lib.HtmlQuery.Node
+﻿namespace Fnio.Lib.HtmlQuery.Node
 {
     /// <summary>
     /// Html attribute.
@@ -11,8 +7,8 @@ namespace Fnio.Lib.HtmlQuery.Node
     {
         public HtmlAttribute(string name, string value)
         {
-            this.Name = name.ToLowerInvariant();
-            this.Value = value;
+            Name = name.ToLowerInvariant();
+            Value = value;
         }
 
         /// <summary>
@@ -24,5 +20,8 @@ namespace Fnio.Lib.HtmlQuery.Node
         /// Get attribute value.
         /// </summary>
         public string Value { get; private set; }
+
+        public override string ToString() => $"{Name}=\"{Value}\"";
+
     }
 }

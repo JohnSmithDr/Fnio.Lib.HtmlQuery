@@ -11,41 +11,33 @@ namespace Fnio.Lib.HtmlQuery
         /// </summary>
         public static IEnumerable<HtmlElement> AsTraversable(this HtmlElement element)
         {
-            var self = new HtmlElement[] { element };
+            var self = new[] { element };
             return self.Concat(element.Descendants());
         }
 
         /// <summary>
         /// Get element sequence by depth-first traversing.
         /// </summary>
-        public static IEnumerable<HtmlElement> AsTraversable(this IEnumerable<HtmlElement> source)
-        {
-            return source.SelectMany(c => c.AsTraversable());
-        }
+        public static IEnumerable<HtmlElement> AsTraversable(this IEnumerable<HtmlElement> source) 
+            => source.SelectMany(AsTraversable);
 
         /// <summary>
         /// Determines whether the element has any attribute.
         /// </summary>
-        public static bool HasAttribute(this HtmlElement element)
-        {
-            return element.Attributes.Any();
-        }
+        public static bool HasAttribute(this HtmlElement element) 
+            => element.Attributes.Any();
 
         /// <summary>
         /// Determines whether the element has attribute with specific attribute name.
         /// </summary>
-        public static bool HasAttribute(this HtmlElement element, string attributeName)
-        {
-            return element.Attributes.GetAttribute(attributeName) != null;
-        }
+        public static bool HasAttribute(this HtmlElement element, string attributeName) 
+            => element.Attributes.GetAttribute(attributeName) != null;
 
         /// <summary>
         /// Determines whether the element has a specific class name.
         /// </summary>
-        public static bool HasClassName(this HtmlElement element, string className)
-        {
-            return element.ClassNames.Contains(className);
-        }
+        public static bool HasClassName(this HtmlElement element, string className) 
+            => element.ClassNames.Contains(className);
 
         /// <summary>
         /// Determines whether the element has specific class names.
@@ -60,10 +52,8 @@ namespace Fnio.Lib.HtmlQuery
         /// <summary>
         /// Determines whether the element has specific class names.
         /// </summary>
-        public static bool ContainsClassNames(this HtmlElement element, params string[] classNames)
-        {
-            return ContainsClassNames(element, classNames.AsEnumerable());
-        }
+        public static bool ContainsClassNames(this HtmlElement element, params string[] classNames) 
+            => ContainsClassNames(element, classNames.AsEnumerable());
 
     }
 }

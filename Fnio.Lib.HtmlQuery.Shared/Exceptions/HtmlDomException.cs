@@ -4,7 +4,7 @@ namespace Fnio.Lib.HtmlQuery
 {
     public class HtmlDomException : Exception
     {
-        public HtmlDomException() : base()
+        public HtmlDomException()
         {
 
         }

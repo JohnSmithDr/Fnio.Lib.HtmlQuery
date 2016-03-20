@@ -3,7 +3,6 @@ using Fnio.Lib.HtmlQuery.Selector;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Fnio.Lib.HtmlQuery
 {

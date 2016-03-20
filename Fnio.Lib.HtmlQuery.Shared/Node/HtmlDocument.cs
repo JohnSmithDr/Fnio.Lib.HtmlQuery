@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Fnio.Lib.HtmlQuery.Node
 {
@@ -11,58 +10,32 @@ namespace Fnio.Lib.HtmlQuery.Node
 
         public HtmlElement Root { get; private set; }
 
-        public HtmlElement Head
-        {
-            get { return this.Root?.Children().FirstOrDefault(c => c.TagName == "head"); }
-        }
+        public HtmlElement Head => Root?.Children().FirstOrDefault(c => c.TagName == "head");
 
-        public HtmlElement Body
-        {
-            get { return this.Root?.Children().FirstOrDefault(c => c.TagName == "body"); }
-        }
+        public HtmlElement Body => Root?.Children().FirstOrDefault(c => c.TagName == "body");
 
-        public string Title
-        {
-            get { return this.Head?.Children().FirstOrDefault(c => c.TagName == "title")?.Text()?.Trim(); }
-        }
+        public string Title => Head?.Children().FirstOrDefault(c => c.TagName == "title")?.Text()?.Trim();
 
-        public HtmlDocument() { }
+        public HtmlElement CreateElement(string tag) => new HtmlElement(this, tag, null, null);
 
-        public HtmlElement CreateElement(string tag)
-        {
-            return new HtmlElement(this, tag, null, null);
-        }
+        public HtmlElement CreateElement(string tag, HtmlAttributes attributes) => new HtmlElement(this, tag, attributes, null);
 
-        public HtmlElement CreateElement(string tag, HtmlAttributes attributes)
-        {
-            return new HtmlElement(this, tag, attributes, null);
-        }
+        public HtmlElement CreateElement(string tag, IEnumerable<HtmlNode> childNodes) => new HtmlElement(this, tag, null, childNodes);
 
-        public HtmlElement CreateElement(string tag, IEnumerable<HtmlNode> childNodes)
-        {
-            return new HtmlElement(this, tag, null, childNodes);
-        }
+        public HtmlElement CreateElement(string tag, params HtmlNode[] childNodes) => new HtmlElement(this, tag, null, childNodes);
 
-        public HtmlElement CreateElement(string tag, params HtmlNode[] childNodes)
-        {
-            return new HtmlElement(this, tag, null, childNodes);
-        }
+        public HtmlElement CreateElement(string tag, HtmlAttributes attributes, IEnumerable<HtmlNode> childNodes) => new HtmlElement(this, tag, attributes, childNodes);
 
-        public HtmlElement CreateElement(string tag, HtmlAttributes attributes, IEnumerable<HtmlNode> childNodes)
-        {
-            return new HtmlElement(this, tag, attributes, childNodes);
-        }
-
-        public HtmlTextNode CreateTextNode(string text)
-        {
-            return new HtmlTextNode(this, text);
-        }
+        public HtmlTextNode CreateTextNode(string text) => new HtmlTextNode(this, text);
 
         internal void SetRoot(HtmlElement element)
         {
             if (this != element.Document)
+            {
                 throw new HtmlDomException("Element is not created by current document");
-            this.Root = element;
+            }
+                
+            Root = element;
         }
 
     }

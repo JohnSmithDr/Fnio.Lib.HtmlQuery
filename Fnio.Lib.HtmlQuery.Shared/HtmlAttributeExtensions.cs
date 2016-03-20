@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Fnio.Lib.HtmlQuery.Node
 {
@@ -18,9 +16,7 @@ namespace Fnio.Lib.HtmlQuery.Node
             return string.IsNullOrEmpty(src) ? src : CombineUrl(e.Document.Url, src);
         }
 
-        private static string CombineUrl(Uri baseUrl, string relativeOrAbsoluteUrl)
-        {
-            return new Uri(baseUrl, relativeOrAbsoluteUrl).ToString();
-        }
+        private static string CombineUrl(Uri baseUrl, string relativeOrAbsoluteUrl) => 
+            new Uri(baseUrl, relativeOrAbsoluteUrl).ToString();
     }
 }

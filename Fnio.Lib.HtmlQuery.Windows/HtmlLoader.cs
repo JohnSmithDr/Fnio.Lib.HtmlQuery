@@ -33,7 +33,7 @@ namespace Fnio.Lib.HtmlQuery
                 //
                 if (response.Content.Headers.ContentType != null)
                 {
-                    charset = response.Content.Headers.ContentType.CharSet ?? null;
+                    charset = response.Content.Headers.ContentType.CharSet;
                     Debug.WriteLine("Charset from http header content-type: " + charset);
                 }
 
@@ -43,7 +43,7 @@ namespace Fnio.Lib.HtmlQuery
                 {
                     var html = await response.Content.ReadAsStringAsync();
                     var match = MetaCharsetRegex.Match(html);
-                    charset = match?.Groups[1].Value.Trim() ?? null;
+                    charset = match.Groups[1].Value.Trim();
                     Debug.WriteLine("Charset from html meta tag: " + charset);
                 }
 
@@ -54,7 +54,7 @@ namespace Fnio.Lib.HtmlQuery
                     charset = "utf-8";
                 }
 
-                var encoding = Encoding.GetEncoding(charset) ?? Encoding.UTF8;
+                var encoding = Encoding.GetEncoding(charset);
                 var data = await response.Content.ReadAsByteArrayAsync();
                 var result = encoding.GetString(data, 0, data.Length);
                 return result;

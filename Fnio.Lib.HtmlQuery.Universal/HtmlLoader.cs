@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using Windows.Foundation;
@@ -25,7 +24,7 @@ namespace Fnio.Lib.HtmlQuery
                     //
                     if (response.Content.Headers.ContentType != null)
                     {
-                        charset = response.Content.Headers.ContentType.CharSet ?? null;
+                        charset = response.Content.Headers.ContentType.CharSet;
                         Debug.WriteLine("Charset from http header content-type: " + charset);
                     }
 
@@ -35,7 +34,7 @@ namespace Fnio.Lib.HtmlQuery
                     {
                         var html = await response.Content.ReadAsStringAsync();
                         var match = MetaCharsetRegex.Match(html);
-                        charset = match?.Groups[1].Value.Trim() ?? null;
+                        charset = match?.Groups[1].Value.Trim();
                         Debug.WriteLine("Charset from html meta tag: " + charset);
                     }
 

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Fnio.Lib.HtmlQuery.Node
+﻿namespace Fnio.Lib.HtmlQuery.Node
 {
     /// <summary>
     /// Abstract html node.
