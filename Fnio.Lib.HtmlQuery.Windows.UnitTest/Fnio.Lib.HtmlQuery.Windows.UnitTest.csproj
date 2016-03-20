@@ -78,6 +78,7 @@
     <Compile Include="Selector\QueryParserTest.cs" />
     <Compile Include="TestData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Parser\TokenQueueTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fnio.Lib.HtmlQuery.Windows\Fnio.Lib.HtmlQuery.Windows.csproj">
