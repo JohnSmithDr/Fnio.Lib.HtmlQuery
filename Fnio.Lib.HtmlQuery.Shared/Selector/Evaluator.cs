@@ -50,7 +50,7 @@ namespace Fnio.Lib.HtmlQuery.Selector
 
             public override bool Matches(HtmlElement root, HtmlElement element) => ElementId.Equals(element.Id);
 
-            public override string ToString() => ElementId;
+            public override string ToString() => $"#{ElementId}";
 
         }
 
@@ -454,7 +454,7 @@ namespace Fnio.Lib.HtmlQuery.Selector
                 return parent != null && InnerEvaluator.Matches(root, parent);
             }
 
-            public override string ToString() => $":parent{InnerEvaluator}";
+            public override string ToString() => $":parent({InnerEvaluator})";
         }
 
         public class Ancestor : StructuralEvaluator
@@ -464,7 +464,7 @@ namespace Fnio.Lib.HtmlQuery.Selector
             public override bool Matches(HtmlElement root, HtmlElement element)
                 => root != element && element.Ancestors().Reverse().Any(e => InnerEvaluator.Matches(root, e));
 
-            public override string ToString() => $":ancestor{InnerEvaluator}";
+            public override string ToString() => $":ancestor({InnerEvaluator})";
         }
 
         public class Previous : StructuralEvaluator
@@ -483,7 +483,7 @@ namespace Fnio.Lib.HtmlQuery.Selector
                 return prev != null && InnerEvaluator.Matches(root, prev);
             }
 
-            public override string ToString() => $":prev{InnerEvaluator}";
+            public override string ToString() => $":prev({InnerEvaluator})";
 
         }
 
@@ -494,7 +494,7 @@ namespace Fnio.Lib.HtmlQuery.Selector
             public override bool Matches(HtmlElement root, HtmlElement element)
                 => root != element && element.ElementsBeforeSelf().Reverse().Any(e => InnerEvaluator.Matches(root, e));
 
-            public override string ToString() => $":prev*{InnerEvaluator}";
+            public override string ToString() => $":prev*({InnerEvaluator})";
 
         }
 
