@@ -7,7 +7,7 @@ namespace Fnio.Lib.HtmlQuery
     public static partial class HtmlQuery
     {
         /// <summary>
-        /// Get element sequence of depth-first traversal.
+        /// Get element sequence by depth-first traversing.
         /// </summary>
         public static IEnumerable<HtmlElement> AsTraversable(this HtmlElement element)
         {
@@ -16,7 +16,7 @@ namespace Fnio.Lib.HtmlQuery
         }
 
         /// <summary>
-        /// Get element sequence of depth-first traversal.
+        /// Get element sequence by depth-first traversing.
         /// </summary>
         public static IEnumerable<HtmlElement> AsTraversable(this IEnumerable<HtmlElement> source)
         {
