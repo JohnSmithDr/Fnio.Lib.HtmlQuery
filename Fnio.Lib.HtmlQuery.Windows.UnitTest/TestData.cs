@@ -14,7 +14,7 @@ namespace Fnio.Lib.HtmlQuery.Windows.UnitTest
                 <head>
                     <meta charset=""utf-8"">
                     <title>Example</title>
-                    <link href=""http://www.example.org/foo.js""></link>
+                    <link href=""http://www.example.org/foo.css""></link>
                     <script src=""http://www.example.org/bar.js""></script>
                 </head>
                 <body>

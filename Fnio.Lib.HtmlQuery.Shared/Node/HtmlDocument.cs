@@ -6,7 +6,7 @@ namespace Fnio.Lib.HtmlQuery.Node
 {
     public class HtmlDocument
     {
-        public Uri Url { get; internal set; }
+        public Uri BaseUri { get; internal set; }
 
         public HtmlElement Root { get; private set; }
 

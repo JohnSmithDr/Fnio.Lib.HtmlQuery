@@ -120,6 +120,7 @@
     <Compile Include="Node\HtmlAttributesTest.cs" />
     <Compile Include="Node\HtmlAttributeTest.cs" />
     <Compile Include="Node\HtmlElementTest.cs" />
+    <Compile Include="Parser\TokenQueueTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Query\AncestorsTest.cs" />
     <Compile Include="Query\ChildrenTest.cs" />
@@ -128,6 +129,8 @@
     <Compile Include="Query\ElementsTest.cs" />
     <Compile Include="Query\HtmlQueryTest.cs" />
     <Compile Include="Query\SiblingsTest.cs" />
+    <Compile Include="Selector\QueryParserTest.cs" />
+    <Compile Include="Selector\QuerySelectorTest.cs" />
     <Compile Include="TestData.cs" />
   </ItemGroup>
   <ItemGroup>

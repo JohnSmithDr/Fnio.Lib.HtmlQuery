@@ -65,7 +65,7 @@ namespace Fnio.Lib.HtmlQuery
             {
                 var html = await LoadHtmlAsync(httpClient, uri).AsTask(c, p);
                 var htmlDoc = HtmlParser.Parse(html, tagFilters);
-                htmlDoc.Url = uri;
+                htmlDoc.BaseUri = uri;
                 return htmlDoc;
             });
         }

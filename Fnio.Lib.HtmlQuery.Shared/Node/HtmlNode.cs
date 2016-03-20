@@ -1,10 +1,17 @@
-﻿namespace Fnio.Lib.HtmlQuery.Node
+﻿using System;
+
+namespace Fnio.Lib.HtmlQuery.Node
 {
     /// <summary>
     /// Abstract html node.
     /// </summary>
     public abstract class HtmlNode
     {
+        /// <summary>
+        /// Get base uri of node.
+        /// </summary>
+        public Uri BaseUri => Document.BaseUri;
+
         /// <summary>
         /// Get the parent node of current node.
         /// </summary>

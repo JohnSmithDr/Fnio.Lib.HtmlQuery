@@ -76,6 +76,7 @@
     <Compile Include="Query\HtmlQueryTest.cs" />
     <Compile Include="Query\SiblingsTest.cs" />
     <Compile Include="Selector\QueryParserTest.cs" />
+    <Compile Include="Selector\QuerySelectorTest.cs" />
     <Compile Include="TestData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Parser\TokenQueueTest.cs" />
