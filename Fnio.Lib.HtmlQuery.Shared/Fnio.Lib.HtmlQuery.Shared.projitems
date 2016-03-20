@@ -30,6 +30,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Query\Siblings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Selector\Evaluator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Selector\QueryParser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Selector\QuerySelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils.cs" />
   </ItemGroup>
 </Project>
