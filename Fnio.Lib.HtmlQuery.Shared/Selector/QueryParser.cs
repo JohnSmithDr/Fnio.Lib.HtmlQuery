@@ -23,8 +23,8 @@ namespace Fnio.Lib.HtmlQuery.Selector
         /// <param name="query">css query selector</param>
         private QueryParser(string query)
         {
-            _query = query;
-            _tq = new TokenQueue(query);
+            _query = query.Trim();
+            _tq = new TokenQueue(_query);
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace Fnio.Lib.HtmlQuery.Selector
         /// <param name="query">css query selector</param>
         public static Evaluator Parse(string query)
         {
-            QueryParser p = new QueryParser(query);
+            var p = new QueryParser(query);
             return p.Parse();
         }
 
@@ -261,7 +261,7 @@ namespace Fnio.Lib.HtmlQuery.Selector
             int index;
             if (!int.TryParse(indexStr, out index))
             {
-                throw new Exception("Index must be numeric");
+                throw new SelectorParseException("Index must be numeric");
             }
 
             return index;
