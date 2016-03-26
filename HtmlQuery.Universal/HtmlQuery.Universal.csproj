@@ -109,9 +109,9 @@
   <ItemGroup>
     <Compile Include="HtmlLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Properties\Fnio.Lib.HtmlQuery.Universal.rd.xml" />
+    <EmbeddedResource Include="Properties\HtmlQuery.Universal.rd.xml" />
   </ItemGroup>
-  <Import Project="..\Fnio.Lib.HtmlQuery.Shared\Fnio.Lib.HtmlQuery.Shared.projitems" Label="Shared" />
+  <Import Project="..\HtmlQuery.Shared\HtmlQuery.Shared.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

@@ -3,26 +3,26 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Fnio.Lib.HtmlQuery.Shared", "Fnio.Lib.HtmlQuery.Shared\Fnio.Lib.HtmlQuery.Shared.shproj", "{F3A60C8E-BD0E-48C2-899C-DFBDD0852B51}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "HtmlQuery.Shared", "HtmlQuery.Shared\HtmlQuery.Shared.shproj", "{F3A60C8E-BD0E-48C2-899C-DFBDD0852B51}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fnio.Lib.HtmlQuery.Windows", "Fnio.Lib.HtmlQuery.Windows\Fnio.Lib.HtmlQuery.Windows.csproj", "{1555069C-7FE0-4D7D-95B1-02838680B984}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlQuery.Windows", "HtmlQuery.Windows\HtmlQuery.Windows.csproj", "{1555069C-7FE0-4D7D-95B1-02838680B984}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fnio.Lib.HtmlQuery.Universal", "Fnio.Lib.HtmlQuery.Universal\Fnio.Lib.HtmlQuery.Universal.csproj", "{3A063170-98FF-4A02-8B62-0038BC30BC0D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlQuery.Universal", "HtmlQuery.Universal\HtmlQuery.Universal.csproj", "{3A063170-98FF-4A02-8B62-0038BC30BC0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fnio.Lib.HtmlQuery.Portable", "Fnio.Lib.HtmlQuery.Portable\Fnio.Lib.HtmlQuery.Portable.csproj", "{BB354CDD-FEFF-4D76-AE23-6BB4C2BEAF9D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlQuery.Portable", "HtmlQuery.Portable\HtmlQuery.Portable.csproj", "{BB354CDD-FEFF-4D76-AE23-6BB4C2BEAF9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fnio.Lib.HtmlQuery.Windows.UnitTest", "Fnio.Lib.HtmlQuery.Windows.UnitTest\Fnio.Lib.HtmlQuery.Windows.UnitTest.csproj", "{99CAA8AB-57AC-48A0-8D97-290C574577F8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlQuery.Windows.UnitTest", "HtmlQuery.Windows.UnitTest\HtmlQuery.Windows.UnitTest.csproj", "{99CAA8AB-57AC-48A0-8D97-290C574577F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fnio.Lib.HtmlQuery.Universal.UnitTest", "Fnio.Lib.HtmlQuery.Universal.UnitTest\Fnio.Lib.HtmlQuery.Universal.UnitTest.csproj", "{E83E0859-89BF-4DA4-B796-A4188803F959}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlQuery.Universal.UnitTest", "HtmlQuery.Universal.UnitTest\HtmlQuery.Universal.UnitTest.csproj", "{E83E0859-89BF-4DA4-B796-A4188803F959}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fnio.Lib.HtmlQuery.Portable.UnitTest", "Fnio.Lib.HtmlQuery.Portable.UnitTest\Fnio.Lib.HtmlQuery.Portable.UnitTest.csproj", "{6EAAB5A1-7EA5-45BC-8D40-4223CC4DDABE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlQuery.Portable.UnitTest", "HtmlQuery.Portable.UnitTest\HtmlQuery.Portable.UnitTest.csproj", "{6EAAB5A1-7EA5-45BC-8D40-4223CC4DDABE}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		Fnio.Lib.HtmlQuery.Shared\Fnio.Lib.HtmlQuery.Shared.projitems*{f3a60c8e-bd0e-48c2-899c-dfbdd0852b51}*SharedItemsImports = 13
-		Fnio.Lib.HtmlQuery.Shared\Fnio.Lib.HtmlQuery.Shared.projitems*{3a063170-98ff-4a02-8b62-0038bc30bc0d}*SharedItemsImports = 4
-		Fnio.Lib.HtmlQuery.Shared\Fnio.Lib.HtmlQuery.Shared.projitems*{bb354cdd-feff-4d76-ae23-6bb4c2beaf9d}*SharedItemsImports = 4
-		Fnio.Lib.HtmlQuery.Shared\Fnio.Lib.HtmlQuery.Shared.projitems*{1555069c-7fe0-4d7d-95b1-02838680b984}*SharedItemsImports = 4
+		HtmlQuery.Shared\HtmlQuery.Shared.projitems*{f3a60c8e-bd0e-48c2-899c-dfbdd0852b51}*SharedItemsImports = 13
+		HtmlQuery.Shared\HtmlQuery.Shared.projitems*{3a063170-98ff-4a02-8b62-0038bc30bc0d}*SharedItemsImports = 4
+		HtmlQuery.Shared\HtmlQuery.Shared.projitems*{bb354cdd-feff-4d76-ae23-6bb4c2beaf9d}*SharedItemsImports = 4
+		HtmlQuery.Shared\HtmlQuery.Shared.projitems*{1555069c-7fe0-4d7d-95b1-02838680b984}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -82,13 +82,13 @@
     <Compile Include="Parser\TokenQueueTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Fnio.Lib.HtmlQuery.Windows\Fnio.Lib.HtmlQuery.Windows.csproj">
-      <Project>{1555069c-7fe0-4d7d-95b1-02838680b984}</Project>
-      <Name>Fnio.Lib.HtmlQuery.Windows</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\HtmlQuery.Windows\HtmlQuery.Windows.csproj">
+      <Project>{1555069c-7fe0-4d7d-95b1-02838680b984}</Project>
+      <Name>HtmlQuery.Windows</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

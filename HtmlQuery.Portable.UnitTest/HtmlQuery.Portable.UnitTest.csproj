@@ -11,14 +11,15 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Fnio.Lib.HtmlQuery.Portable.UnitTest</RootNamespace>
     <AssemblyName>Fnio.Lib.HtmlQuery.Portable.UnitTest</AssemblyName>
-    <DefaultLanguage>zh-CN</DefaultLanguage>
+    <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>Fnio.Lib.HtmlQuery.Portable.UnitTest_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>HtmlQuery.Portable.UnitTest_TemporaryKey.pfx</PackageCertificateKeyFile>
     <AppxBundle>Never</AppxBundle>
     <AllowCrossPlatformRetargeting>False</AllowCrossPlatformRetargeting>
+    <PackageCertificateThumbprint>83FA2FBC319BC158F22D6B9D9FFD7F8D9014D27C</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -137,7 +138,7 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="Fnio.Lib.HtmlQuery.Portable.UnitTest_TemporaryKey.pfx" />
+    <None Include="HtmlQuery.Portable.UnitTest_TemporaryKey.pfx" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -155,12 +156,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Fnio.Lib.HtmlQuery.Portable\Fnio.Lib.HtmlQuery.Portable.csproj">
-      <Project>{bb354cdd-feff-4d76-ae23-6bb4c2beaf9d}</Project>
-      <Name>Fnio.Lib.HtmlQuery.Portable</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Reference Include="FluentAssertions, Version=4.2.2.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentAssertions.4.2.2\lib\win81\FluentAssertions.dll</HintPath>
       <Private>True</Private>
@@ -169,6 +164,12 @@
       <HintPath>..\packages\FluentAssertions.4.2.2\lib\win81\FluentAssertions.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HtmlQuery.Portable\HtmlQuery.Portable.csproj">
+      <Project>{bb354cdd-feff-4d76-ae23-6bb4c2beaf9d}</Project>
+      <Name>HtmlQuery.Portable</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
